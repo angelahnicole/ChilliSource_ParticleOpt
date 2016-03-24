@@ -32,6 +32,7 @@ include $(CS_PROJECT_ROOT)/ChilliSource/Tools/Scripts/AndroidBuildConfig.mk
 
 #gather all files in the engine that should be built
 CS_SOURCEFILES_CHILLISOURCE := $(shell 'python' '$(CS_SCRIPT_GETFILESWITHEXTENSIONS)' '--directory' '$(CS_PROJECT_ROOT)/ChilliSource/Source/ChilliSource/' '--extensions' 'cpp,c,cc')
+CS_SOURCEFILES_SHINY := $(shell 'python' '$(CS_SCRIPT_GETFILESWITHEXTENSIONS)' '--directory' '$(CS_PROJECT_ROOT)/ChilliSource/Source/Shiny/' '--extensions' 'cpp,c,cc')
 CS_SOURCEFILES_PLATFORM := $(shell 'python' '$(CS_SCRIPT_GETFILESWITHEXTENSIONS)' '--directory' '$(CS_PROJECT_ROOT)/ChilliSource/Source/CSBackend/Platform/Android/Main/JNI/' '--extensions' 'cpp,c,cc')
 CS_SOURCEFILES_RENDERING := $(shell 'python' '$(CS_SCRIPT_GETFILESWITHEXTENSIONS)' '--directory' '$(CS_PROJECT_ROOT)/ChilliSource/Source/CSBackend/Rendering/OpenGL/' '--extensions' 'cpp,c,cc')
 
@@ -46,7 +47,7 @@ endif
 include $(CLEAR_VARS)
 LOCAL_MODULE := ChilliSource
 LOCAL_CXXFLAGS := $(CS_CXXFLAGS)
-LOCAL_SRC_FILES := $(CS_SOURCEFILES_CHILLISOURCE) $(CS_SOURCEFILES_PLATFORM) $(CS_SOURCEFILES_RENDERING)
+LOCAL_SRC_FILES := $(CS_SOURCEFILES_CHILLISOURCE) $(CS_SOURCEFILES_SHINY) $(CS_SOURCEFILES_PLATFORM) $(CS_SOURCEFILES_RENDERING)
 LOCAL_C_INCLUDES := $(CS_C_INCLUDES)
 LOCAL_SHORT_COMMANDS := true
 include $(BUILD_STATIC_LIBRARY)

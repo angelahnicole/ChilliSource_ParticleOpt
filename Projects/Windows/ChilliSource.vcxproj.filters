@@ -196,6 +196,9 @@
     <Filter Include="ChilliSource\UI\Text">
       <UniqueIdentifier>{762b0967-d803-4715-87bf-f92ff839dbe4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shiny">
+      <UniqueIdentifier>{5cdc8e30-01f8-4d64-bee1-6a0afd098293}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\CSBackend\Rendering\OpenGL\Base\ContextRestorer.cpp">
@@ -977,6 +980,27 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\ChilliSource\Core\Entity\PrimitiveEntityFactory.cpp">
       <Filter>ChilliSource\Core\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Shiny\ShinyManager.c">
+      <Filter>Shiny</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Shiny\ShinyNode.c">
+      <Filter>Shiny</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Shiny\ShinyNodePool.c">
+      <Filter>Shiny</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Shiny\ShinyNodeState.c">
+      <Filter>Shiny</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Shiny\ShinyOutput.c">
+      <Filter>Shiny</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Shiny\ShinyTools.c">
+      <Filter>Shiny</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Shiny\ShinyZone.c">
+      <Filter>Shiny</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2123,5 +2147,48 @@
     <ClInclude Include="..\..\Source\ChilliSource\Core\Entity\PrimitiveEntityFactory.h">
       <Filter>ChilliSource\Core\Entity</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="..\..\Source\Shiny\Shiny.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Shiny\ShinyConfig.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Shiny\ShinyData.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Shiny\ShinyMacros.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Shiny\ShinyManager.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Shiny\ShinyNode.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Shiny\ShinyNodePool.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Shiny\ShinyNodeState.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Shiny\ShinyOutput.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Shiny\ShinyPrereqs.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Shiny\ShinyTools.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Shiny\ShinyVersion.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Shiny\ShinyZone.h">
+      <Filter>Shiny</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ChilliSource.rc" />
   </ItemGroup>
 </Project>

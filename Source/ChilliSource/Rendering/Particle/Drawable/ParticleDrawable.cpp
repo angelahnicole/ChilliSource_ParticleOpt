@@ -44,6 +44,8 @@ namespace ChilliSource
 		//----------------------------------------------------------------
 		void ParticleDrawable::Draw(const CameraComponent* in_camera)
 		{
+			// PROFILE_FUNC();
+
 			m_concurrentParticleData->Lock();
 
 			auto newIndices = m_concurrentParticleData->TakeNewIndices();
