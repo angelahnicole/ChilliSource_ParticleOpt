@@ -62,8 +62,6 @@ namespace ChilliSource
 		//----------------------------------------------------------------
 		void ScaleOverLifetimeParticleAffector::AffectParticles(f32 in_deltaTime, f32 in_effectProgress)
 		{
-			// PROFILE_FUNC();
-
 			Core::dynamic_array<Particle>* particleArray = GetParticleArray();
 			for (u32 i = 0; i < particleArray->size(); ++i)
 			{

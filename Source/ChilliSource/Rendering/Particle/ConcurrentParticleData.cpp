@@ -108,8 +108,6 @@ namespace ChilliSource
 		//-----------------------------------------------------------------
 		void ConcurrentParticleData::CommitParticleData(const Core::dynamic_array<Rendering::Particle>* in_particles, const std::vector<u32>& in_newIndices, const Core::AABB& in_aabb, const Core::Sphere& in_boundingSphere)
 		{
-			// PROFILE_FUNC();
-
 			std::unique_lock<std::recursive_mutex> lock(m_mutex);
 
 			CS_ASSERT(in_particles->size() == m_particles.size(), "Particle data lists must be the same size.");

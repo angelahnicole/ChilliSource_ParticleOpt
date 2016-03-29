@@ -682,10 +682,6 @@
     <ClInclude Include="..\..\Source\Shiny\ShinyTools.h" />
     <ClInclude Include="..\..\Source\Shiny\ShinyVersion.h" />
     <ClInclude Include="..\..\Source\Shiny\ShinyZone.h" />
-    <ClInclude Include="resource.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="ChilliSource.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A9B516D3-71D5-4661-8EEE-DA55F3EADC9A}</ProjectGuid>

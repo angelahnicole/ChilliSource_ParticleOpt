@@ -107,8 +107,6 @@ namespace ChilliSource
 				const Core::Vector2& in_localTR, const Core::Vector3& in_worldPosition, const Core::Vector2& in_worldScale, const Core::Quaternion& in_worldOrientation,
 				const Core::Colour& in_colour)
 			{
-				// PROFILE_FUNC();
-
 				SpriteBatch::SpriteData spriteData;
 				spriteData.pMaterial = in_material;
 
@@ -185,8 +183,6 @@ namespace ChilliSource
 		//----------------------------------------------------------------
 		void StaticBillboardParticleDrawable::DrawParticles(const Core::dynamic_array<ConcurrentParticleData::Particle>& in_particleData, const CameraComponent* in_camera)
 		{
-			// PROFILE_FUNC();
-
 			switch (GetDrawableDef()->GetParticleEffect()->GetSimulationSpace())
 			{
 			case ParticleEffect::SimulationSpace::k_local:
@@ -258,8 +254,6 @@ namespace ChilliSource
 		//----------------------------------------------------------------
 		void StaticBillboardParticleDrawable::DrawLocalSpace(const Core::dynamic_array<ConcurrentParticleData::Particle>& in_particleData, const CameraComponent* in_camera) const
 		{
-			// PROFILE_FUNC();
-
 			const auto& material = m_billboardDrawableDef->GetMaterial();
 			auto entityWorldTransform = GetEntity()->GetTransform().GetWorldTransform();
 
@@ -296,8 +290,6 @@ namespace ChilliSource
 		//----------------------------------------------------------------
 		void StaticBillboardParticleDrawable::DrawWorldSpace(const Core::dynamic_array<ConcurrentParticleData::Particle>& in_particleData, const CameraComponent* in_camera) const
 		{
-			// PROFILE_FUNC();
-
 			const auto& material = m_billboardDrawableDef->GetMaterial();
 
 			//billboard by applying the inverse of the view orientation. The view orientation is the inverse of the camera entity orientation.

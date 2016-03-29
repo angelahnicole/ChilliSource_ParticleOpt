@@ -2147,7 +2147,6 @@
     <ClInclude Include="..\..\Source\ChilliSource\Core\Entity\PrimitiveEntityFactory.h">
       <Filter>ChilliSource\Core\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
     <ClInclude Include="..\..\Source\Shiny\Shiny.h">
       <Filter>Shiny</Filter>
     </ClInclude>
@@ -2187,8 +2186,5 @@
     <ClInclude Include="..\..\Source\Shiny\ShinyZone.h">
       <Filter>Shiny</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="ChilliSource.rc" />
   </ItemGroup>
 </Project>

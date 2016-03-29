@@ -149,8 +149,6 @@ namespace ChilliSource
 				std::shared_ptr<Core::dynamic_array<Particle>> in_particleArray, ConcurrentParticleDataSPtr in_concurrentParticleData, f32 in_playbackTime, 
 				f32 in_deltaTime, Core::Vector3 in_entityPosition, Core::Vector3 in_entityScale, Core::Quaternion in_entityOrientation, bool in_interpolateEmission)
 			{
-				// PROFILE_FUNC();
-
 				CS_ASSERT(in_particleEffect != nullptr, "Cannot update particles with null particle effect.");
 				CS_ASSERT(in_particleArray != nullptr, "Cannot update particles with null particle array.");
 				CS_ASSERT(in_concurrentParticleData != nullptr, "Cannot update particles with null concurrent particle data.");
@@ -425,8 +423,6 @@ namespace ChilliSource
 		//----------------------------------------------------------------
 		void ParticleEffectComponent::UpdateWorldBoundingShapes()
 		{
-			// PROFILE_FUNC();
-
 			CS_ASSERT(GetEntity() != nullptr, "Cannot get world bounding shapes without being attached to an entity.");
 
 			if (m_invalidateBoundingShapeCache == true)
@@ -506,8 +502,6 @@ namespace ChilliSource
 		//-------------------------------------------------------
 		void ParticleEffectComponent::OnUpdate(f32 in_deltaTime)
 		{
-			// PROFILE_FUNC();
-
 			if (m_particleEffect != nullptr)
 			{
 				switch (m_playbackState)
@@ -534,8 +528,6 @@ namespace ChilliSource
 		//----------------------------------------------------------------
 		void ParticleEffectComponent::UpdateStartingState(f32 in_deltaTime)
 		{
-			// PROFILE_FUNC();
-
 			if (m_concurrentParticleData->StartUpdate() == true)
 			{
 				//intialise the particles by disabling them all.
@@ -558,8 +550,6 @@ namespace ChilliSource
 		//----------------------------------------------------------------
 		void ParticleEffectComponent::UpdatePlayingState(f32 in_deltaTime)
 		{
-			// PROFILE_FUNC();
-
 			m_playbackTimer += in_deltaTime;
 
 			//Update the playback timer. If we're not looping and time's up, then stop emitting.
@@ -594,8 +584,6 @@ namespace ChilliSource
 		//----------------------------------------------------------------
 		void ParticleEffectComponent::UpdateStoppingState(f32 in_deltaTime)
 		{
-			// PROFILE_FUNC();
-
 			if (m_concurrentParticleData->HasActiveParticles() == false)
 			{
 				Stop();
@@ -620,8 +608,6 @@ namespace ChilliSource
 		//-------------------------------------------------------
 		void ParticleEffectComponent::Render(RenderSystem* in_renderSystem, CameraComponent* in_camera, ShaderPass in_shaderPass)
 		{
-			// PROFILE_FUNC();
-
 			if (m_particleEffect != nullptr && (m_playbackState == PlaybackState::k_playing || m_playbackState == PlaybackState::k_stopping))
 			{
 				CS_ASSERT(m_drawable != nullptr, "Cannot render without a drawable.");
