@@ -196,8 +196,14 @@
     <Filter Include="ChilliSource\UI\Text">
       <UniqueIdentifier>{762b0967-d803-4715-87bf-f92ff839dbe4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shiny">
-      <UniqueIdentifier>{5cdc8e30-01f8-4d64-bee1-6a0afd098293}</UniqueIdentifier>
+    <Filter Include="CSProfiling">
+      <UniqueIdentifier>{4682f0e0-0470-4059-8dc7-b808de199703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSProfiling\Shiny">
+      <UniqueIdentifier>{39bae823-0683-4bf2-b4ff-685533eefcc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSProfiling\Metrics">
+      <UniqueIdentifier>{f434f5bc-ac74-427e-a486-01a3adc64055}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -981,26 +987,29 @@
     <ClCompile Include="..\..\Source\ChilliSource\Core\Entity\PrimitiveEntityFactory.cpp">
       <Filter>ChilliSource\Core\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Shiny\ShinyManager.c">
-      <Filter>Shiny</Filter>
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyManager.c">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Shiny\ShinyNode.c">
-      <Filter>Shiny</Filter>
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyNode.c">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Shiny\ShinyNodePool.c">
-      <Filter>Shiny</Filter>
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyNodePool.c">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Shiny\ShinyNodeState.c">
-      <Filter>Shiny</Filter>
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyNodeState.c">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Shiny\ShinyOutput.c">
-      <Filter>Shiny</Filter>
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyOutput.c">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Shiny\ShinyTools.c">
-      <Filter>Shiny</Filter>
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyTools.c">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Shiny\ShinyZone.c">
-      <Filter>Shiny</Filter>
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyZone.c">
+      <Filter>CSProfiling\Shiny</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\CSProfiling\Metrics\MetricsSystem.cpp">
+      <Filter>CSProfiling\Metrics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2147,44 +2156,53 @@
     <ClInclude Include="..\..\Source\ChilliSource\Core\Entity\PrimitiveEntityFactory.h">
       <Filter>ChilliSource\Core\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\Shiny.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\CSProfiling.h">
+      <Filter>CSProfiling</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\ShinyConfig.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\ForwardDeclarations.h">
+      <Filter>CSProfiling</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\ShinyData.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\Shiny.h">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\ShinyMacros.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyConfig.h">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\ShinyManager.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyData.h">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\ShinyNode.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyMacros.h">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\ShinyNodePool.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyManager.h">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\ShinyNodeState.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyNode.h">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\ShinyOutput.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyNodePool.h">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\ShinyPrereqs.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyNodeState.h">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\ShinyTools.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyOutput.h">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\ShinyVersion.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyPrereqs.h">
+      <Filter>CSProfiling\Shiny</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Shiny\ShinyZone.h">
-      <Filter>Shiny</Filter>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyTools.h">
+      <Filter>CSProfiling\Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyVersion.h">
+      <Filter>CSProfiling\Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyZone.h">
+      <Filter>CSProfiling\Shiny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CSProfiling\Metrics\MetricsSystem.h">
+      <Filter>CSProfiling\Metrics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

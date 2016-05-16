@@ -279,13 +279,14 @@
     <ClCompile Include="..\..\Source\CSBackend\Rendering\OpenGL\Texture\Cubemap.cpp" />
     <ClCompile Include="..\..\Source\CSBackend\Rendering\OpenGL\Texture\Texture.cpp" />
     <ClCompile Include="..\..\Source\CSBackend\Rendering\OpenGL\Texture\TextureUnitSystem.cpp" />
-    <ClCompile Include="..\..\Source\Shiny\ShinyManager.c" />
-    <ClCompile Include="..\..\Source\Shiny\ShinyNode.c" />
-    <ClCompile Include="..\..\Source\Shiny\ShinyNodePool.c" />
-    <ClCompile Include="..\..\Source\Shiny\ShinyNodeState.c" />
-    <ClCompile Include="..\..\Source\Shiny\ShinyOutput.c" />
-    <ClCompile Include="..\..\Source\Shiny\ShinyTools.c" />
-    <ClCompile Include="..\..\Source\Shiny\ShinyZone.c" />
+    <ClCompile Include="..\..\Source\CSProfiling\Metrics\MetricsSystem.cpp" />
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyManager.c" />
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyNode.c" />
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyNodePool.c" />
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyNodeState.c" />
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyOutput.c" />
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyTools.c" />
+    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyZone.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\ChilliSource\Audio\CricketAudio.h" />
@@ -669,19 +670,22 @@
     <ClInclude Include="..\..\Source\CSBackend\Rendering\OpenGL\Texture\Cubemap.h" />
     <ClInclude Include="..\..\Source\CSBackend\Rendering\OpenGL\Texture\Texture.h" />
     <ClInclude Include="..\..\Source\CSBackend\Rendering\OpenGL\Texture\TextureUnitSystem.h" />
-    <ClInclude Include="..\..\Source\Shiny\Shiny.h" />
-    <ClInclude Include="..\..\Source\Shiny\ShinyConfig.h" />
-    <ClInclude Include="..\..\Source\Shiny\ShinyData.h" />
-    <ClInclude Include="..\..\Source\Shiny\ShinyMacros.h" />
-    <ClInclude Include="..\..\Source\Shiny\ShinyManager.h" />
-    <ClInclude Include="..\..\Source\Shiny\ShinyNode.h" />
-    <ClInclude Include="..\..\Source\Shiny\ShinyNodePool.h" />
-    <ClInclude Include="..\..\Source\Shiny\ShinyNodeState.h" />
-    <ClInclude Include="..\..\Source\Shiny\ShinyOutput.h" />
-    <ClInclude Include="..\..\Source\Shiny\ShinyPrereqs.h" />
-    <ClInclude Include="..\..\Source\Shiny\ShinyTools.h" />
-    <ClInclude Include="..\..\Source\Shiny\ShinyVersion.h" />
-    <ClInclude Include="..\..\Source\Shiny\ShinyZone.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\CSProfiling.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\ForwardDeclarations.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Metrics\MetricsSystem.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\Shiny.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyConfig.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyData.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyMacros.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyManager.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyNode.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyNodePool.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyNodeState.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyOutput.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyPrereqs.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyTools.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyVersion.h" />
+    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyZone.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A9B516D3-71D5-4661-8EEE-DA55F3EADC9A}</ProjectGuid>

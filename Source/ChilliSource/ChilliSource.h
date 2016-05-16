@@ -52,12 +52,6 @@ typedef double				f64;
 typedef u64                 TimeIntervalSecs;
 typedef u64                 TimeIntervalMs;
 
-//------------------------------------------------------------
-/// Temporary profiling library to use on Android, which has
-/// limited profiling ability with NDK
-//------------------------------------------------------------
-#include "../Shiny/Shiny.h"
-
 #include <ChilliSource/Core/Base/StandardMacros.h>
 //------------------------------------------------------------
 /// The forward declarations for each section of the Chilli
