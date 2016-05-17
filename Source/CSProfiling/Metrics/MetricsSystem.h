@@ -62,7 +62,7 @@ namespace CSProfiling
 		///
 		/// @return The new instance.
 		//------------------------------------------------------------------------------
-		static MetricsSystemUPtr Create(u32 in_maxRunNum, u32 in_runTime, std::initializer_list<u32> in_particlesEmittedList);
+		static MetricsSystemUPtr Create(u32 in_maxRunNum, u32 in_runTime, u32 in_minParticles, u32 in_maxParticles, u32 in_particlesStep);
 		//------------------------------------------------------------------------------
 		/// Destroys the object
 		///
@@ -117,13 +117,14 @@ namespace CSProfiling
 		//------------------------------------------------------------------------------
 		bool AreAllRunsOver() const;
 		//------------------------------------------------------------------------------
-		/// Increments the particle index so we "move on" to measuring a new particle.
+		/// Increments the current particles per emission by the step (given at
+        /// construction)
 		///
 		/// @author Angela Gross
 		///
-		/// @return The current particle index
+		/// @return The current number of particles per emission
 		//------------------------------------------------------------------------------
-		u32 IncrementParticlesIdx();
+		u32 IncrementParticles();
 		//------------------------------------------------------------------------------
 		/// Starts the timer   
 		///
@@ -166,7 +167,7 @@ namespace CSProfiling
 		/// @param in_maxRunNum
 		/// @param in_runTime
 		//------------------------------------------------------------------------------
-		MetricsSystem(u32 in_maxRunNum, u32 in_runTime, std::initializer_list<u32> in_particlesEmittedList);
+		MetricsSystem(u32 in_maxRunNum, u32 in_runTime, u32 in_minParticles, u32 in_maxParticles, u32 in_particlesStep);
 		//------------------------------------------------------------------------------
 		/// The method to be called when the timer has "gone off" 
 		///
@@ -182,15 +183,15 @@ namespace CSProfiling
 		std::ostringstream m_metricsOSS;
 		bool m_isOutputInitialized = false;
 
+        u32 m_currentParticles = 0;
 		u32 m_runNum = 0;
 		u32 m_leftSideHit = 0;
 		u32 m_rightSideHit = 0;
 		u32 m_renderBallCalled = 0;
 
-		u32 m_currParticleIdx = 0;
-		std::vector<u32> m_particlesEmittedList;
-
-		const u32 k_maxParticlesEmitted;
+        const u32 k_minParticles;
+        const u32 k_maxParticles;
+        const u32 k_particlesStep;
 		const u32 k_maxRunNum;
 		const u32 k_runTime;
 	};

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		068B03A11CEBA73D001C381D /* MetricsSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 068B038A1CEBA73D001C381D /* MetricsSystem.cpp */; };
+		068B03A21CEBA73D001C381D /* ShinyManager.c in Sources */ = {isa = PBXBuildFile; fileRef = 068B03911CEBA73D001C381D /* ShinyManager.c */; };
+		068B03A31CEBA73D001C381D /* ShinyNode.c in Sources */ = {isa = PBXBuildFile; fileRef = 068B03931CEBA73D001C381D /* ShinyNode.c */; };
+		068B03A41CEBA73D001C381D /* ShinyNodePool.c in Sources */ = {isa = PBXBuildFile; fileRef = 068B03951CEBA73D001C381D /* ShinyNodePool.c */; };
+		068B03A51CEBA73D001C381D /* ShinyNodeState.c in Sources */ = {isa = PBXBuildFile; fileRef = 068B03971CEBA73D001C381D /* ShinyNodeState.c */; };
+		068B03A61CEBA73D001C381D /* ShinyOutput.c in Sources */ = {isa = PBXBuildFile; fileRef = 068B03991CEBA73D001C381D /* ShinyOutput.c */; };
+		068B03A71CEBA73D001C381D /* ShinyTools.c in Sources */ = {isa = PBXBuildFile; fileRef = 068B039C1CEBA73D001C381D /* ShinyTools.c */; };
+		068B03A81CEBA73D001C381D /* ShinyZone.c in Sources */ = {isa = PBXBuildFile; fileRef = 068B039F1CEBA73D001C381D /* ShinyZone.c */; };
 		810B47CE1A8D16BF003F4984 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810B47CD1A8D16BF003F4984 /* FacebookSDK.framework */; };
 		8113673019C99A2E00D9AEDC /* Filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8113672D19C99A2E00D9AEDC /* Filter.cpp */; };
 		811B181819D19AF400B06B5D /* RotationGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 811B181619D19AF400B06B5D /* RotationGesture.cpp */; };
@@ -329,6 +337,30 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		068B03871CEBA73D001C381D /* CSProfiling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSProfiling.h; sourceTree = "<group>"; };
+		068B03881CEBA73D001C381D /* ForwardDeclarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForwardDeclarations.h; sourceTree = "<group>"; };
+		068B038A1CEBA73D001C381D /* MetricsSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MetricsSystem.cpp; sourceTree = "<group>"; };
+		068B038B1CEBA73D001C381D /* MetricsSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsSystem.h; sourceTree = "<group>"; };
+		068B038D1CEBA73D001C381D /* Shiny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shiny.h; sourceTree = "<group>"; };
+		068B038E1CEBA73D001C381D /* ShinyConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinyConfig.h; sourceTree = "<group>"; };
+		068B038F1CEBA73D001C381D /* ShinyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinyData.h; sourceTree = "<group>"; };
+		068B03901CEBA73D001C381D /* ShinyMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinyMacros.h; sourceTree = "<group>"; };
+		068B03911CEBA73D001C381D /* ShinyManager.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ShinyManager.c; sourceTree = "<group>"; };
+		068B03921CEBA73D001C381D /* ShinyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinyManager.h; sourceTree = "<group>"; };
+		068B03931CEBA73D001C381D /* ShinyNode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ShinyNode.c; sourceTree = "<group>"; };
+		068B03941CEBA73D001C381D /* ShinyNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinyNode.h; sourceTree = "<group>"; };
+		068B03951CEBA73D001C381D /* ShinyNodePool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ShinyNodePool.c; sourceTree = "<group>"; };
+		068B03961CEBA73D001C381D /* ShinyNodePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinyNodePool.h; sourceTree = "<group>"; };
+		068B03971CEBA73D001C381D /* ShinyNodeState.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ShinyNodeState.c; sourceTree = "<group>"; };
+		068B03981CEBA73D001C381D /* ShinyNodeState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinyNodeState.h; sourceTree = "<group>"; };
+		068B03991CEBA73D001C381D /* ShinyOutput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ShinyOutput.c; sourceTree = "<group>"; };
+		068B039A1CEBA73D001C381D /* ShinyOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinyOutput.h; sourceTree = "<group>"; };
+		068B039B1CEBA73D001C381D /* ShinyPrereqs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinyPrereqs.h; sourceTree = "<group>"; };
+		068B039C1CEBA73D001C381D /* ShinyTools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ShinyTools.c; sourceTree = "<group>"; };
+		068B039D1CEBA73D001C381D /* ShinyTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinyTools.h; sourceTree = "<group>"; };
+		068B039E1CEBA73D001C381D /* ShinyVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinyVersion.h; sourceTree = "<group>"; };
+		068B039F1CEBA73D001C381D /* ShinyZone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ShinyZone.c; sourceTree = "<group>"; };
+		068B03A01CEBA73D001C381D /* ShinyZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinyZone.h; sourceTree = "<group>"; };
 		810B47CD1A8D16BF003F4984 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		8113672D19C99A2E00D9AEDC /* Filter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Filter.cpp; sourceTree = "<group>"; };
 		8113672E19C99A2E00D9AEDC /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
@@ -1147,6 +1179,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		068B03861CEBA73D001C381D /* CSProfiling */ = {
+			isa = PBXGroup;
+			children = (
+				068B03871CEBA73D001C381D /* CSProfiling.h */,
+				068B03881CEBA73D001C381D /* ForwardDeclarations.h */,
+				068B03891CEBA73D001C381D /* Metrics */,
+				068B038C1CEBA73D001C381D /* Shiny */,
+			);
+			name = CSProfiling;
+			path = ../../Source/CSProfiling;
+			sourceTree = "<group>";
+		};
+		068B03891CEBA73D001C381D /* Metrics */ = {
+			isa = PBXGroup;
+			children = (
+				068B038A1CEBA73D001C381D /* MetricsSystem.cpp */,
+				068B038B1CEBA73D001C381D /* MetricsSystem.h */,
+			);
+			path = Metrics;
+			sourceTree = "<group>";
+		};
+		068B038C1CEBA73D001C381D /* Shiny */ = {
+			isa = PBXGroup;
+			children = (
+				068B038D1CEBA73D001C381D /* Shiny.h */,
+				068B038E1CEBA73D001C381D /* ShinyConfig.h */,
+				068B038F1CEBA73D001C381D /* ShinyData.h */,
+				068B03901CEBA73D001C381D /* ShinyMacros.h */,
+				068B03911CEBA73D001C381D /* ShinyManager.c */,
+				068B03921CEBA73D001C381D /* ShinyManager.h */,
+				068B03931CEBA73D001C381D /* ShinyNode.c */,
+				068B03941CEBA73D001C381D /* ShinyNode.h */,
+				068B03951CEBA73D001C381D /* ShinyNodePool.c */,
+				068B03961CEBA73D001C381D /* ShinyNodePool.h */,
+				068B03971CEBA73D001C381D /* ShinyNodeState.c */,
+				068B03981CEBA73D001C381D /* ShinyNodeState.h */,
+				068B03991CEBA73D001C381D /* ShinyOutput.c */,
+				068B039A1CEBA73D001C381D /* ShinyOutput.h */,
+				068B039B1CEBA73D001C381D /* ShinyPrereqs.h */,
+				068B039C1CEBA73D001C381D /* ShinyTools.c */,
+				068B039D1CEBA73D001C381D /* ShinyTools.h */,
+				068B039E1CEBA73D001C381D /* ShinyVersion.h */,
+				068B039F1CEBA73D001C381D /* ShinyZone.c */,
+				068B03A01CEBA73D001C381D /* ShinyZone.h */,
+			);
+			path = Shiny;
+			sourceTree = "<group>";
+		};
 		8113672C19C99A2E00D9AEDC /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -1510,6 +1590,7 @@
 		81D8ACEC1962CEDC0010DA84 = {
 			isa = PBXGroup;
 			children = (
+				068B03861CEBA73D001C381D /* CSProfiling */,
 				81D8B4AA1962E0F60010DA84 /* CSBackend */,
 				81D8B2281962E0EB0010DA84 /* ChilliSource */,
 				81D8B2051962D2EF0010DA84 /* Libraries */,
@@ -2959,6 +3040,7 @@
 				81D8B3FD1962E0EC0010DA84 /* Application.cpp in Sources */,
 				81D8B6AA1962E0F70010DA84 /* DeviceButtonSystem.mm in Sources */,
 				81D8B46D1962E0EC0010DA84 /* RenderComponentFactory.cpp in Sources */,
+				068B03A81CEBA73D001C381D /* ShinyZone.c in Sources */,
 				81C925281A5C3ADB00B3AE11 /* CircleParticleEmitter.cpp in Sources */,
 				81D8B4301962E0EC0010DA84 /* State.cpp in Sources */,
 				81D8B43E1962E0EC0010DA84 /* XMLUtils.cpp in Sources */,
@@ -3013,6 +3095,7 @@
 				81D8B4051962E0EC0010DA84 /* Utils.cpp in Sources */,
 				81C9251D1A5C3ADB00B3AE11 /* ParticleAffectorDef.cpp in Sources */,
 				81E258B01A5D38EF0020264E /* StandardDrawableDef.cpp in Sources */,
+				068B03A11CEBA73D001C381D /* MetricsSystem.cpp in Sources */,
 				81D8B4711962E0EC0010DA84 /* VertexDeclaration.cpp in Sources */,
 				81C9251C1A5C3ADB00B3AE11 /* ParticleAffector.cpp in Sources */,
 				81D8B6BD1962E0F70010DA84 /* WebView.mm in Sources */,
@@ -3049,6 +3132,7 @@
 				81D8B4351962E0EC0010DA84 /* UTF8StringUtils.cpp in Sources */,
 				8138A8F61A5804AA00C81462 /* CkBankProvider.cpp in Sources */,
 				81D8B4221962E0EC0010DA84 /* MathUtils.cpp in Sources */,
+				068B03A61CEBA73D001C381D /* ShinyOutput.c in Sources */,
 				81C9252D1A5C3ADB00B3AE11 /* ConeParticleEmitterDef.cpp in Sources */,
 				81D8B47B1962E0EC0010DA84 /* Material.cpp in Sources */,
 				81E258A31A5D38EF0020264E /* WidgetFactory.cpp in Sources */,
@@ -3066,6 +3150,7 @@
 				81D8B4721962E0EC0010DA84 /* CameraComponent.cpp in Sources */,
 				817C8C7D1B4D7D5000ADDE52 /* StringMarkupParser.cpp in Sources */,
 				81D8B4A11962E0EC0010DA84 /* TextureResourceOptions.cpp in Sources */,
+				068B03A41CEBA73D001C381D /* ShinyNodePool.c in Sources */,
 				81D8B6BC1962E0F70010DA84 /* VideoPlayerTapListener.mm in Sources */,
 				81D8B4001962E0EC0010DA84 /* ColourUtils.cpp in Sources */,
 				81E258A11A5D38EF0020264E /* WidgetDefProvider.cpp in Sources */,
@@ -3125,10 +3210,12 @@
 				81D8B4151962E0EC0010DA84 /* FileSystem.cpp in Sources */,
 				81C925271A5C3ADB00B3AE11 /* StaticBillboardParticleDrawableDef.cpp in Sources */,
 				81AAFBBD19C9C18100CD4A14 /* TapGesture.cpp in Sources */,
+				068B03A71CEBA73D001C381D /* ShinyTools.c in Sources */,
 				8138A8FA1A5804AA00C81462 /* CricketAudioSystem.cpp in Sources */,
 				81E258F11A5D43C20020264E /* GridLayoutDef.cpp in Sources */,
 				81E258AA1A5D38EF0020264E /* DrawableComponent.cpp in Sources */,
 				81C9252C1A5C3ADB00B3AE11 /* ConeParticleEmitter.cpp in Sources */,
+				068B03A31CEBA73D001C381D /* ShinyNode.c in Sources */,
 				81D8B4851962E0EC0010DA84 /* SkinnedAnimationGroup.cpp in Sources */,
 				81B1D2D6196C2410000F13DD /* TextEntry.cpp in Sources */,
 				81D8B4871962E0EC0010DA84 /* SubMesh.cpp in Sources */,
@@ -3159,6 +3246,7 @@
 				81D8B4641962E0EC0010DA84 /* IAPSystem.cpp in Sources */,
 				81E258D61A5D39A00020264E /* VerticalTextJustification.cpp in Sources */,
 				81E258AD1A5D38EF0020264E /* NinePatchDrawable.cpp in Sources */,
+				068B03A51CEBA73D001C381D /* ShinyNodeState.c in Sources */,
 				81D8B41C1962E0EC0010DA84 /* PVRImageProvider.cpp in Sources */,
 				81D8B4731962E0EC0010DA84 /* OrthographicCameraComponent.cpp in Sources */,
 				81E258BE1A5D38EF0020264E /* TextComponent.cpp in Sources */,
@@ -3224,6 +3312,7 @@
 				81D8B4991962E0EC0010DA84 /* SpriteComponent.cpp in Sources */,
 				81E258A01A5D38EF0020264E /* WidgetDef.cpp in Sources */,
 				81D8B4631962E0EC0010DA84 /* HttpRequestSystem.cpp in Sources */,
+				068B03A21CEBA73D001C381D /* ShinyManager.c in Sources */,
 				81D8B6B01962E0F70010DA84 /* HttpRequestSystem.mm in Sources */,
 				81D8B6D51962E0F70010DA84 /* Shader.cpp in Sources */,
 				81D8B4231962E0EC0010DA84 /* UnifiedCoordinates.cpp in Sources */,

@@ -55,9 +55,9 @@ namespace CSProfiling
 
 	//---------------------------------------------------
 	//---------------------------------------------------
-	MetricsSystemUPtr MetricsSystem::Create(u32 in_maxRunNum, u32 in_runTime, std::initializer_list<u32> in_particlesEmittedList)
+	MetricsSystemUPtr MetricsSystem::Create(u32 in_maxRunNum, u32 in_runTime, u32 in_minParticles, u32 in_maxParticles, u32 in_particlesStep)
 	{
-		return MetricsSystemUPtr(new MetricsSystem(in_maxRunNum, in_runTime, in_particlesEmittedList));
+		return MetricsSystemUPtr(new MetricsSystem(in_maxRunNum, in_runTime, in_minParticles, in_maxParticles, in_particlesStep));
 	}
 	//----------------------------------------------------------
 	//----------------------------------------------------------
@@ -76,10 +76,10 @@ namespace CSProfiling
 	}
 	//----------------------------------------------------------
 	//----------------------------------------------------------
-	MetricsSystem::MetricsSystem(u32 in_maxRunNum, u32 in_runTime, std::initializer_list<u32> in_particlesEmittedList)
-		: k_maxRunNum(in_maxRunNum), k_runTime(in_runTime), k_maxParticlesEmitted(in_particlesEmittedList.size())
+	MetricsSystem::MetricsSystem(u32 in_maxRunNum, u32 in_runTime, u32 in_minParticles, u32 in_maxParticles, u32 in_particlesStep)
+		: k_maxRunNum(in_maxRunNum), k_runTime(in_runTime), k_minParticles(in_minParticles), k_maxParticles(in_maxParticles), k_particlesStep(in_particlesStep)
 	{
-		m_particlesEmittedList = std::vector<u32>(in_particlesEmittedList);
+        m_currentParticles = k_minParticles;
 	}
 	//----------------------------------------------------------
 	//----------------------------------------------------------
@@ -118,17 +118,19 @@ namespace CSProfiling
 	//----------------------------------------------------------
 	bool MetricsSystem::AreAllRunsOver() const
 	{
-		return (m_currParticleIdx == m_particlesEmittedList.size() - 1) && AreRunsOver();
+		return (m_currentParticles >= k_maxParticles) && AreRunsOver();
 	}
 	//----------------------------------------------------------
 	//----------------------------------------------------------
-	u32 MetricsSystem::IncrementParticlesIdx()
+	u32 MetricsSystem::IncrementParticles()
 	{
-		// increment and reset run num
-		m_currParticleIdx++;
+		// reset run num
 		m_runNum = 0;
-		CS_ASSERT(m_currParticleIdx < m_particlesEmittedList.size(), "The particles emitted index is higher than the number of particles listed");
-		return m_currParticleIdx;
+        
+        // increment the particles per emission by the step
+        m_currentParticles += k_particlesStep;
+		
+        return m_currentParticles;
 	}
 	//----------------------------------------------------------
 	//----------------------------------------------------------
@@ -166,7 +168,7 @@ namespace CSProfiling
 			m_isOutputInitialized = true;
 		}
 
-		m_metricsOSS << m_particlesEmittedList[m_currParticleIdx] << "," 
+		m_metricsOSS << m_currentParticles << ","
 			<< m_runNum << "," 
 			<< m_leftSideHit << "," 
 			<< m_rightSideHit << "," 
