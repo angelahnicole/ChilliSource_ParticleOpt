@@ -37,4 +37,46 @@ namespace CSProfiling
 	
 }
 
+//------------------------------------------------------------
+/// Android: std::to_string and std::put_time is not defined
+/// so we have to define it
+//------------------------------------------------------------
+#include <string>
+#include <sstream>
+#include <iomanip>
+#include <ctime>
+//------------------------------------------------------------
+#if defined(CS_TARGETPLATFORM_ANDROID)
+//------------------------------------------------------------
+#define TO_STRING to_stringAndroid
+template <typename T>
+inline std::string to_stringAndroid(T in_value)
+{
+    std::ostringstream os;
+    os << in_value;
+    return os.str();
+}
+#define PUT_TIME put_timeAndroid
+inline std::string put_timeAndroid(const struct tm* in_tm, const char* in_fmt)
+{
+	auto tmb = mktime(in_tm);
+    std::ostringstream os;
+    char buffer[100];
+    if (std::strftime(buffer, sizeof(buffer), in_fmt, std::localtime(tmb)))
+    {
+        os << buffer;
+    }
+    else
+    {
+        os << "NULL";
+    }
+    return os.str();
+}
+//------------------------------------------------------------
+#else
+#define TO_STRING std::to_string
+#define PUT_TIME std::put_time
+#endif
+//------------------------------------------------------------
+
 #endif

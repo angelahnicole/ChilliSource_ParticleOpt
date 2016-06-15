@@ -34,10 +34,6 @@
 #include <ChilliSource/Core/String/StringUtils.h>
 #include <ChilliSource/Core/Container/ParamDictionary.h>
 
-#include <sstream>
-#include <iomanip>
-#include <ctime>
-
 namespace CSProfiling
 {
 	namespace
@@ -192,9 +188,9 @@ namespace CSProfiling
 
 			// get current time as string
 			std::ostringstream timeOSS;
-			auto t = std::time(nullptr);
-			auto tm = *std::localtime(&t);
-			timeOSS << std::put_time(&tm, "%d-%m-%Y_%H-%M-%S");
+			const time_t tmb = std::time(nullptr);
+			auto tm = *localtime(&tmb);
+			timeOSS << PUT_TIME(&tm, "%d-%m-%Y_%H-%M-%S");
 			std::string timeStr = timeOSS.str();
 
 			// build path
@@ -203,8 +199,8 @@ namespace CSProfiling
 				k_baseFilePath, 
 				{ 
 					std::make_pair(k_dateVarName, timeStr),
-					std::make_pair(k_runTimeVarName, std::to_string(k_runTime)),
-					std::make_pair(k_runNumVarName, std::to_string(k_maxRunNum)) 
+					std::make_pair(k_runTimeVarName, TO_STRING(k_runTime)),
+					std::make_pair(k_runNumVarName, TO_STRING(k_maxRunNum))
 				}
 			);
 
@@ -249,7 +245,7 @@ namespace CSProfiling
 			profileStr.append("\r\n\r\n");
 			profileStr.append(PROFILE_GET_TREE_STRING());
 
-			std::string profilePath = CSCore::StringUtils::InsertVariables(k_baseShinyFilePath, { std::make_pair(k_runNumVarName, std::to_string(m_runNum)) });
+			std::string profilePath = CSCore::StringUtils::InsertVariables(k_baseShinyFilePath, { std::make_pair(k_runNumVarName, TO_STRING(m_runNum)) });
 
 			// write profile 
 			isWritten = CSCore::Application::Get()->GetFileSystem()->WriteFile(k_storageLocation, profilePath, profileStr);
