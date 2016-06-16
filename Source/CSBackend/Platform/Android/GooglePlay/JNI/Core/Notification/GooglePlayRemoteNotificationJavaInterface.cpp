@@ -53,7 +53,10 @@ void Java_com_chilliworks_chillisource_core_GooglePlayRemoteNotificationNativeIn
 	if(pInterface != nullptr)
 	{
 		const std::string strToken = CSBackend::Android::JavaUtils::CreateSTDStringFromJString(instrToken);
-		CSCore::Application::Get()->GetTaskScheduler()->ScheduleMainThreadTask(std::bind(&CSBackend::Android::GooglePlayRemoteNotificationJavaInterface::OnRemoteTokenReceived, pInterface.get(), strToken));
+		ChilliSource::Application::Get()->GetTaskScheduler()->ScheduleTask(ChilliSource::TaskType::k_mainThread, [=](const ChilliSource::TaskContext&)
+		{
+			pInterface->OnRemoteTokenReceived(strToken);
+		});
 	}
 }
 
@@ -66,7 +69,7 @@ void Java_com_chilliworks_chillisource_core_GooglePlayRemoteNotificationNativeIn
 		CS_ASSERT((inpEnv->GetArrayLength(inaKeys) == inpEnv->GetArrayLength(inaValues)), "CRemoteNotificationJavaInterface::NativeOnRemoteNotificationReceived has received a notification with different quantities of keys and values.");
 
 		u32 dwNumEntries = inpEnv->GetArrayLength(inaKeys);
-		CSCore::ParamDictionary sParams;
+		ChilliSource::ParamDictionary sParams;
 
 		for(u32 i = 0; i < dwNumEntries; ++i)
 		{
@@ -82,7 +85,10 @@ void Java_com_chilliworks_chillisource_core_GooglePlayRemoteNotificationNativeIn
 			sParams.SetValue(strKey, strValue);
 		}
 
-		CSCore::Application::Get()->GetTaskScheduler()->ScheduleMainThreadTask(std::bind(&CSBackend::Android::GooglePlayRemoteNotificationJavaInterface::OnRemoteNotificationReceived, pInterface.get(), sParams));
+		ChilliSource::Application::Get()->GetTaskScheduler()->ScheduleTask(ChilliSource::TaskType::k_mainThread, [=](const ChilliSource::TaskContext&)
+		{
+			pInterface->OnRemoteNotificationReceived(sParams);
+		});
 	}
 }
 
@@ -103,7 +109,7 @@ namespace CSBackend
     	//--------------------------------------------------------------
 		/// Is A
 		//--------------------------------------------------------------
-		bool GooglePlayRemoteNotificationJavaInterface::IsA(CSCore::InterfaceIDType inInterfaceID) const
+		bool GooglePlayRemoteNotificationJavaInterface::IsA(ChilliSource::InterfaceIDType inInterfaceID) const
 		{
 			return (inInterfaceID == GooglePlayRemoteNotificationJavaInterface::InterfaceID);
 		}
@@ -120,16 +126,16 @@ namespace CSBackend
 		//-------------------------------------------------------------------------
 		void GooglePlayRemoteNotificationJavaInterface::OnRemoteTokenReceived(const std::string& instrToken)
 		{
-			CSBackend::Android::GooglePlayRemoteNotificationSystem* pRemoteNotificationSys = CSCore::Application::Get()->GetSystem<CSBackend::Android::GooglePlayRemoteNotificationSystem>();
+			CSBackend::Android::GooglePlayRemoteNotificationSystem* pRemoteNotificationSys = ChilliSource::Application::Get()->GetSystem<CSBackend::Android::GooglePlayRemoteNotificationSystem>();
 			CS_ASSERT(pRemoteNotificationSys, "Unable to get remote notification system.");
 			pRemoteNotificationSys->OnRemoteTokenReceived(instrToken);
 		}
 		//-------------------------------------------------------------------------
 		/// On Remote Notification Received
 		//-------------------------------------------------------------------------
-		void GooglePlayRemoteNotificationJavaInterface::OnRemoteNotificationReceived(const CSCore::ParamDictionary& insParams)
+		void GooglePlayRemoteNotificationJavaInterface::OnRemoteNotificationReceived(const ChilliSource::ParamDictionary& insParams)
 		{
-			CSBackend::Android::GooglePlayRemoteNotificationSystem* pRemoteNotificationSys = CSCore::Application::Get()->GetSystem<CSBackend::Android::GooglePlayRemoteNotificationSystem>();
+			CSBackend::Android::GooglePlayRemoteNotificationSystem* pRemoteNotificationSys = ChilliSource::Application::Get()->GetSystem<CSBackend::Android::GooglePlayRemoteNotificationSystem>();
 			CS_ASSERT(pRemoteNotificationSys, "Unable to get remote notification system.");
 			pRemoteNotificationSys->OnRemoteNotificationReceived(insParams);
 		}

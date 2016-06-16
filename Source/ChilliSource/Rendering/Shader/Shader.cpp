@@ -34,18 +34,15 @@
 
 namespace ChilliSource
 {
-	namespace Rendering
-	{
-        CS_DEFINE_NAMEDTYPE(Shader);
-        //----------------------------------------------------------
-        //----------------------------------------------------------
-        ShaderUPtr Shader::Create()
-        {
+    CS_DEFINE_NAMEDTYPE(Shader);
+    //----------------------------------------------------------
+    //----------------------------------------------------------
+    ShaderUPtr Shader::Create()
+    {
 #if defined(CS_TARGETPLATFORM_ANDROID) || defined(CS_TARGETPLATFORM_IOS) || defined(CS_TARGETPLATFORM_WINDOWS)
-            return ShaderUPtr(new CSBackend::OpenGL::Shader());
+        return ShaderUPtr(new CSBackend::OpenGL::Shader());
 #else
-            return nullptr;
+        return nullptr;
 #endif
-        }
     }
 }

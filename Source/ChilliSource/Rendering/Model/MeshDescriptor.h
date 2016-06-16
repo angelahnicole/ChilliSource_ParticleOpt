@@ -37,62 +37,58 @@
 
 namespace ChilliSource
 {
-	namespace Rendering
-	{
-		
-		//-------------------------------------------------------------------------
-		/// Describes the features used in this mesh.
-		//-------------------------------------------------------------------------
-		struct MeshFeatureDescriptor
-		{
-			MeshFeatureDescriptor();
-			
-			bool mbHasAnimationData;
-            bool mbHasMaterial;
-            bool mbHasTexture;
-		};
-		//-------------------------------------------------------------------------
-		/// Container for information required to build a sub-mesh. 
-		//-------------------------------------------------------------------------
-		struct SubMeshDescriptor
-		{
-			SubMeshDescriptor();
-			
-			std::string mstrName;
-			u32 mudwNumVertices;
-			u32 mudwNumIndices;
-			CSCore::Vector3 mvMinBounds;
-			CSCore::Vector3 mvMaxBounds;
-			u8* mpVertexData;
-			u8* mpIndexData;
-			std::vector<CSCore::Matrix4> mInverseBindPoseMatrices;
-			PrimitiveType ePrimitiveType;            
-		};
-        //-------------------------------------------------------------------------
-		/// Container for information required to build a skeleton.
-		//-------------------------------------------------------------------------
-		struct SkeletonDescriptor
-		{
-            std::vector<std::string> m_nodeNames;
-            std::vector<s32> m_parentNodeIndices;
-            std::vector<s32> m_jointIndices;
-		};
-		//-------------------------------------------------------------------------
-		/// Container for information required to build a mesh.
-		//-------------------------------------------------------------------------
-		struct MeshDescriptor
-		{
-			MeshDescriptor();
-			
-            SkeletonDescriptor m_skeletonDesc;
-			MeshFeatureDescriptor mFeatures;
-            std::vector<SubMeshDescriptor> mMeshes;
-			VertexDeclaration mVertexDeclaration;
-			Core::Vector3 mvMinBounds;
-			Core::Vector3 mvMaxBounds;
-            u32 mudwIndexSize;
-		};
-	}
+    //-------------------------------------------------------------------------
+    /// Describes the features used in this mesh.
+    //-------------------------------------------------------------------------
+    struct MeshFeatureDescriptor
+    {
+        MeshFeatureDescriptor();
+        
+        bool mbHasAnimationData;
+        bool mbHasMaterial;
+        bool mbHasTexture;
+    };
+    //-------------------------------------------------------------------------
+    /// Container for information required to build a sub-mesh. 
+    //-------------------------------------------------------------------------
+    struct SubMeshDescriptor
+    {
+        SubMeshDescriptor();
+        
+        std::string mstrName;
+        u32 mudwNumVertices;
+        u32 mudwNumIndices;
+        Vector3 mvMinBounds;
+        Vector3 mvMaxBounds;
+        u8* mpVertexData;
+        u8* mpIndexData;
+        std::vector<Matrix4> mInverseBindPoseMatrices;
+        PrimitiveType ePrimitiveType;            
+    };
+    //-------------------------------------------------------------------------
+    /// Container for information required to build a skeleton.
+    //-------------------------------------------------------------------------
+    struct SkeletonDescriptor
+    {
+        std::vector<std::string> m_nodeNames;
+        std::vector<s32> m_parentNodeIndices;
+        std::vector<s32> m_jointIndices;
+    };
+    //-------------------------------------------------------------------------
+    /// Container for information required to build a mesh.
+    //-------------------------------------------------------------------------
+    struct MeshDescriptor
+    {
+        MeshDescriptor();
+        
+        SkeletonDescriptor m_skeletonDesc;
+        MeshFeatureDescriptor mFeatures;
+        std::vector<SubMeshDescriptor> mMeshes;
+        VertexDeclaration mVertexDeclaration;
+        Vector3 mvMinBounds;
+        Vector3 mvMaxBounds;
+        u32 mudwIndexSize;
+    };
 }
 
 #endif

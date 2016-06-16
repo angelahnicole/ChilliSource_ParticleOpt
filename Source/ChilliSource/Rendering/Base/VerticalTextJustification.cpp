@@ -32,30 +32,27 @@
 
 namespace ChilliSource
 {
-    namespace Rendering
+    //-------------------------------------------------------------------
+    //-------------------------------------------------------------------
+    VerticalTextJustification ParseVerticalTextJustification(const std::string& in_string)
     {
-        //-------------------------------------------------------------------
-        //-------------------------------------------------------------------
-        VerticalTextJustification ParseVerticalTextJustification(const std::string& in_string)
+        std::string verticalJustificationString = in_string;
+        StringUtils::ToLowerCase(verticalJustificationString);
+        
+        if (verticalJustificationString == "bottom")
         {
-            std::string verticalJustificationString = in_string;
-            Core::StringUtils::ToLowerCase(verticalJustificationString);
-            
-            if (verticalJustificationString == "bottom")
-            {
-                return Rendering::VerticalTextJustification::k_bottom;
-            }
-            else if (verticalJustificationString == "centre")
-            {
-                return Rendering::VerticalTextJustification::k_centre;
-            }
-            else if (verticalJustificationString == "top")
-            {
-                return Rendering::VerticalTextJustification::k_top;
-            }
-            
-            CS_LOG_FATAL("Invalid vertical justification.");
-            return Rendering::VerticalTextJustification::k_centre;
+            return VerticalTextJustification::k_bottom;
         }
+        else if (verticalJustificationString == "centre")
+        {
+            return VerticalTextJustification::k_centre;
+        }
+        else if (verticalJustificationString == "top")
+        {
+            return VerticalTextJustification::k_top;
+        }
+        
+        CS_LOG_FATAL("Invalid vertical justification.");
+        return VerticalTextJustification::k_centre;
     }
 }

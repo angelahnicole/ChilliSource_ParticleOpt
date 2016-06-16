@@ -30,25 +30,22 @@
 
 namespace ChilliSource
 {
-	namespace Rendering
-	{
-		//----------------------------------------------------------------
-		//----------------------------------------------------------------
-		ParticleAffector::ParticleAffector(const ParticleAffectorDef* in_affectorDef, Core::dynamic_array<Particle>* in_particleArray)
-			: m_affectorDef(in_affectorDef), m_particleArray(in_particleArray)
-		{
-		}
-		//----------------------------------------------------------------
-		//----------------------------------------------------------------
-		const ParticleAffectorDef* ParticleAffector::GetAffectorDef() const
-		{
-			return m_affectorDef;
-		}
-		//----------------------------------------------------------------
-		//----------------------------------------------------------------
-		Core::dynamic_array<Particle>* ParticleAffector::GetParticleArray() const
-		{
-			return m_particleArray;
-		}
-	}
+    //----------------------------------------------------------------
+    //----------------------------------------------------------------
+    ParticleAffector::ParticleAffector(const ParticleAffectorDef* in_affectorDef, dynamic_array<Particle>* in_particleArray)
+        : m_affectorDef(in_affectorDef), m_particleArray(in_particleArray)
+    {
+    }
+    //----------------------------------------------------------------
+    //----------------------------------------------------------------
+    const ParticleAffectorDef* ParticleAffector::GetAffectorDef() const
+    {
+        return m_affectorDef;
+    }
+    //----------------------------------------------------------------
+    //----------------------------------------------------------------
+    dynamic_array<Particle>* ParticleAffector::GetParticleArray() const
+    {
+        return m_particleArray;
+    }
 }

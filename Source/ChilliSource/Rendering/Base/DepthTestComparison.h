@@ -31,23 +31,20 @@
 
 namespace ChilliSource
 {
-	namespace Rendering
-	{
-        //---------------------------------------------
-        /// Used in the depth test function to decide
-        /// whether a pixel should be rendered or not.
-        /// These types describe which comparison operator
-        /// should be used
-        ///
-        /// @author S Downie
-        //---------------------------------------------
-        enum class DepthTestComparison
-        {
-            k_less,
-            k_equal,
-            k_lequal
-        };
-	}
+    //---------------------------------------------
+    /// Used in the depth test function to decide
+    /// whether a pixel should be rendered or not.
+    /// These types describe which comparison operator
+    /// should be used
+    ///
+    /// @author S Downie
+    //---------------------------------------------
+    enum class DepthTestComparison
+    {
+        k_less,
+        k_equal,
+        k_lequal
+    };
 }
 
 #endif

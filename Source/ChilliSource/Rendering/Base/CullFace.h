@@ -31,20 +31,17 @@
 
 namespace ChilliSource
 {
-	namespace Rendering
-	{
-        //---------------------------------------------
-        /// Used in the face culling function to
-        /// describe which faces to remove.
-        ///
-        /// @author S Downie
-        //---------------------------------------------
-        enum class CullFace
-        {
-            k_front,
-            k_back
-        };
-	}
+    //---------------------------------------------
+    /// Used in the face culling function to
+    /// describe which faces to remove.
+    ///
+    /// @author S Downie
+    //---------------------------------------------
+    enum class CullFace
+    {
+        k_front,
+        k_back
+    };
 }
 
 #endif

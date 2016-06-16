@@ -34,19 +34,16 @@
 
 namespace ChilliSource
 {
-    namespace Input
+    CS_DEFINE_NAMEDTYPE(Keyboard);
+    //-------------------------------------------------------
+    //-------------------------------------------------------
+    KeyboardUPtr Keyboard::Create()
     {
-        CS_DEFINE_NAMEDTYPE(Keyboard);
-        //-------------------------------------------------------
-        //-------------------------------------------------------
-        KeyboardUPtr Keyboard::Create()
-        {
 #if defined CS_TARGETPLATFORM_WINDOWS
-            return KeyboardUPtr(new CSBackend::Windows::Keyboard());
+        return KeyboardUPtr(new CSBackend::Windows::Keyboard());
 #else
-            return nullptr;
+        return nullptr;
 #endif
 
-        }
     }
 }

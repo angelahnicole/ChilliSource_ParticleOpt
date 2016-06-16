@@ -34,19 +34,16 @@
 
 namespace ChilliSource
 {
-    namespace Rendering
+    CS_DEFINE_NAMEDTYPE(RenderCapabilities);
+    
+    //-------------------------------------------------------
+    //-------------------------------------------------------
+    RenderCapabilitiesUPtr RenderCapabilities::Create()
     {
-        CS_DEFINE_NAMEDTYPE(RenderCapabilities);
-        
-        //-------------------------------------------------------
-        //-------------------------------------------------------
-        RenderCapabilitiesUPtr RenderCapabilities::Create()
-        {
 #if defined CS_TARGETPLATFORM_IOS || defined CS_TARGETPLATFORM_ANDROID || defined CS_TARGETPLATFORM_WINDOWS
-            return RenderCapabilitiesUPtr(new CSBackend::OpenGL::RenderCapabilities());
+        return RenderCapabilitiesUPtr(new CSBackend::OpenGL::RenderCapabilities());
 #else
-            return nullptr;
+        return nullptr;
 #endif
-        }
     }
 }

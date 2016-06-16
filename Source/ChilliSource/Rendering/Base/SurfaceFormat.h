@@ -33,22 +33,19 @@
 
 namespace ChilliSource
 {
-    namespace Rendering
+    //---------------------------------------------------------
+    /// An enum describing the different possible surface
+    /// formats.
+    ///
+    /// @author Ian Copland
+    //---------------------------------------------------------
+    enum class SurfaceFormat
     {
-        //---------------------------------------------------------
-        /// An enum describing the different possible surface
-        /// formats.
-        ///
-        /// @author Ian Copland
-        //---------------------------------------------------------
-        enum class SurfaceFormat
-        {
-            k_rgb565_depth24,
-            k_rgb565_depth32,
-            k_rgb888_depth24,
-            k_rgb888_depth32
-        };
-    }
+        k_rgb565_depth24,
+        k_rgb565_depth32,
+        k_rgb888_depth24,
+        k_rgb888_depth32
+    };
 }
 
 #endif

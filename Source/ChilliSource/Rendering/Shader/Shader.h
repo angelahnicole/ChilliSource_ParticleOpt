@@ -34,49 +34,46 @@
 
 namespace ChilliSource
 {
-	namespace Rendering
-	{
+    //------------------------------------------------
+    /// Interface into a shader resource. Shaders
+    /// are rendering platform dependent and are used
+    /// by the renderer to decide how to pass data
+    /// to the currently executing shader program
+    ///
+    /// @author S Downie
+    //------------------------------------------------
+    class Shader : public Resource
+    {
+    public:
+        
+        CS_DECLARE_NAMEDTYPE(Shader);
+        
         //------------------------------------------------
-        /// Interface into a shader resource. Shaders
-        /// are rendering platform dependent and are used
-        /// by the renderer to decide how to pass data
-        /// to the currently executing shader program
+        /// Virtual destructor
         ///
         /// @author S Downie
         //------------------------------------------------
-		class Shader : public Core::Resource
-		{
-		public:
-            
-            CS_DECLARE_NAMEDTYPE(Shader);
-            
-            //------------------------------------------------
-            /// Virtual destructor
-            ///
-            /// @author S Downie
-            //------------------------------------------------
-			virtual ~Shader(){}
-			
-		protected:
-            friend class Core::ResourcePool;
-            //----------------------------------------------------------
-            /// Factory method that creates a new empty shader resource.
-            /// Only called by resource pool
-            ///
-            /// @author S Downie
-            ///
-            /// @return Shader resource
-            //----------------------------------------------------------
-			static ShaderUPtr Create();
-            //------------------------------------------------
-            /// Private constructor to ensure that
-            /// "abstract" shader cannot be created
-            ///
-            /// @author S Downie
-            //------------------------------------------------
-			Shader() = default;
-		};
-	}
+        virtual ~Shader(){}
+        
+    protected:
+        friend class ResourcePool;
+        //----------------------------------------------------------
+        /// Factory method that creates a new empty shader resource.
+        /// Only called by resource pool
+        ///
+        /// @author S Downie
+        ///
+        /// @return Shader resource
+        //----------------------------------------------------------
+        static ShaderUPtr Create();
+        //------------------------------------------------
+        /// Private constructor to ensure that
+        /// "abstract" shader cannot be created
+        ///
+        /// @author S Downie
+        //------------------------------------------------
+        Shader() = default;
+    };
 }
 
 #endif

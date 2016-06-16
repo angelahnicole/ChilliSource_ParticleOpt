@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug|x64">
-      <Configuration>Debug</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
@@ -88,8 +88,10 @@
     <ClCompile Include="..\..\Source\ChilliSource\Core\String\ToString.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Core\String\UTF8StringUtils.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Core\System\StateSystem.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\Core\Threading\MainThreadTaskPool.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\Core\Threading\TaskContext.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\Core\Threading\TaskPool.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Core\Threading\TaskScheduler.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\Core\Threading\ThreadPool.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Core\Time\CoreTimer.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Core\Time\PerformanceTimer.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Core\Time\Timer.cpp" />
@@ -97,7 +99,7 @@
     <ClCompile Include="..\..\Source\ChilliSource\Core\XML\XML.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Core\XML\XMLUtils.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Input\Accelerometer\Accelerometer.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\Input\Base\Filter.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\Input\Base\InputFilter.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Input\DeviceButtons\DeviceButtonSystem.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Input\Gesture\DragGesture.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Input\Gesture\Gesture.cpp" />
@@ -129,6 +131,7 @@
     <ClCompile Include="..\..\Source\ChilliSource\Rendering\Base\Renderer.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Rendering\Base\RendererSortPredicates.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Rendering\Base\RenderSystem.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\Rendering\Base\SizePolicy.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Rendering\Base\VertexDeclaration.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Rendering\Base\VerticalTextJustification.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Rendering\Camera\CameraComponent.cpp" />
@@ -205,12 +208,11 @@
     <ClCompile Include="..\..\Source\ChilliSource\Social\Facebook\FacebookAuthenticationSystem.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Social\Facebook\FacebookPostSystem.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\UI\Base\Canvas.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Base\Component.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Base\ComponentDesc.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Base\ComponentFactory.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\UI\Base\PropertyLink.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\UI\Base\PropertyTypes.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Base\SizePolicy.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Base\UIComponent.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Base\UIComponentDesc.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Base\UIComponentFactory.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\UI\Base\Widget.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\UI\Base\WidgetDef.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\UI\Base\WidgetDefProvider.cpp" />
@@ -219,34 +221,34 @@
     <ClCompile Include="..\..\Source\ChilliSource\UI\Base\WidgetParserUtils.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\UI\Base\WidgetTemplate.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\UI\Base\WidgetTemplateProvider.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Button\HighlightComponent.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Button\ToggleHighlightComponent.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\Drawable.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\DrawableComponent.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\DrawableDef.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\DrawableUtils.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\NinePatchDrawable.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\NinePatchDrawableDef.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\StandardDrawable.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\StandardDrawableDef.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\ThreePatchDrawable.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\ThreePatchDrawableDef.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\GridLayout.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\GridLayoutDef.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\HListLayout.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\HListLayoutDef.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\Layout.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\LayoutComponent.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\LayoutDef.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\VListLayout.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\VListLayoutDef.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\ProgressBar\ProgressBarComponent.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Button\HighlightUIComponent.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Button\ToggleHighlightUIComponent.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\DrawableUIComponent.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\NinePatchUIDrawable.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\NinePatchUIDrawableDef.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\StandardUIDrawable.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\StandardUIDrawableDef.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\ThreePatchUIDrawable.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\ThreePatchUIDrawableDef.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\UIDrawable.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\UIDrawableDef.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Drawable\UIDrawableUtils.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\GridUILayout.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\GridUILayoutDef.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\HListUILayout.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\HListUILayoutDef.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\LayoutUIComponent.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\UILayout.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\UILayoutDef.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\VListUILayout.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Layout\VListUILayoutDef.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\UI\ProgressBar\ProgressBarDirection.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\UI\ProgressBar\ProgressBarType.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Slider\SliderComponent.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\ProgressBar\ProgressBarUIComponent.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\UI\Slider\SliderDirection.cpp" />
-    <ClCompile Include="..\..\Source\ChilliSource\UI\Text\TextComponent.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Slider\SliderUIComponent.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\UI\Text\TextIcon.cpp" />
+    <ClCompile Include="..\..\Source\ChilliSource\UI\Text\TextUIComponent.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Video\Base\CSSubtitlesProvider.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Video\Base\Subtitles.cpp" />
     <ClCompile Include="..\..\Source\ChilliSource\Video\Base\VideoPlayer.cpp" />
@@ -279,14 +281,6 @@
     <ClCompile Include="..\..\Source\CSBackend\Rendering\OpenGL\Texture\Cubemap.cpp" />
     <ClCompile Include="..\..\Source\CSBackend\Rendering\OpenGL\Texture\Texture.cpp" />
     <ClCompile Include="..\..\Source\CSBackend\Rendering\OpenGL\Texture\TextureUnitSystem.cpp" />
-    <ClCompile Include="..\..\Source\CSProfiling\Metrics\MetricsSystem.cpp" />
-    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyManager.c" />
-    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyNode.c" />
-    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyNodePool.c" />
-    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyNodeState.c" />
-    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyOutput.c" />
-    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyTools.c" />
-    <ClCompile Include="..\..\Source\CSProfiling\Shiny\ShinyZone.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\ChilliSource\Audio\CricketAudio.h" />
@@ -304,7 +298,9 @@
     <ClInclude Include="..\..\Source\ChilliSource\Core\Base\ByteColour.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Base\Colour.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Base\ColourUtils.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Core\Base\ConstMethodCast.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Base\Device.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Core\Base\GenericFactory.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Base\Logging.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Base\MakeSharedArray.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Base\PlatformSystem.h" />
@@ -389,10 +385,10 @@
     <ClInclude Include="..\..\Source\ChilliSource\Core\Math\MathUtils.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Math\Matrix3.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Math\Matrix4.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Core\Math\NumericLimits.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Math\Quaternion.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Math\Random.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Math\RandomImpl.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\Core\Math\NumericLimits.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Math\UnifiedCoordinates.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Math\Vector2.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Math\Vector3.h" />
@@ -424,8 +420,12 @@
     <ClInclude Include="..\..\Source\ChilliSource\Core\System\AppSystem.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\System\StateSystem.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Threading.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Core\Threading\MainThreadTaskPool.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Core\Threading\Task.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Core\Threading\TaskContext.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Core\Threading\TaskPool.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Threading\TaskScheduler.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\Core\Threading\ThreadPool.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Core\Threading\TaskType.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Time.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Time\CoreTimer.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\Time\PerformanceTimer.h" />
@@ -441,11 +441,14 @@
     <ClInclude Include="..\..\Source\ChilliSource\Core\XML.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\XML\XML.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Core\XML\XMLUtils.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Input\Accelerometer.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\Accelerometer\Accelerometer.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\Base.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\Input\Base\Filter.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Input\Base\InputFilter.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Input\DeviceButtons.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\DeviceButtons\DeviceButtonSystem.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\ForwardDeclarations.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Input\Gesture.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\Gesture\DragGesture.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\Gesture\Gesture.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\Gesture\GestureSystem.h" />
@@ -453,18 +456,25 @@
     <ClInclude Include="..\..\Source\ChilliSource\Input\Gesture\PinchGesture.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\Gesture\RotationGesture.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\Gesture\TapGesture.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Input\Keyboard.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\Keyboard\Keyboard.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\Keyboard\KeyCode.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Input\Keyboard\ModifierKeyCode.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Input\Pointer.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\Pointer\Pointer.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\Pointer\PointerSystem.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Input\TextEntry.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Input\TextEntry\TextEntry.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Networking\ContentDownload.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Networking\ContentDownload\ContentManagementSystem.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Networking\ContentDownload\IContentDownloader.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Networking\ContentDownload\MoContentDownloader.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Networking\ForwardDeclarations.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Networking\Http.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Networking\Http\HttpRequest.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Networking\Http\HttpRequestSystem.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Networking\Http\HttpResponse.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Networking\IAP.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Networking\IAP\IAPSystem.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Rendering\Base.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Rendering\Base\AlignmentAnchors.h" />
@@ -486,6 +496,7 @@
     <ClInclude Include="..\..\Source\ChilliSource\Rendering\Base\RenderSystem.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Rendering\Base\RenderTarget.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Rendering\Base\ShaderPass.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Rendering\Base\SizePolicy.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Rendering\Base\SurfaceFormat.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Rendering\Base\VertexDeclaration.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Rendering\Base\VertexLayouts.h" />
@@ -579,18 +590,19 @@
     <ClInclude Include="..\..\Source\ChilliSource\Rendering\Texture\TextureProvider.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Rendering\Texture\TextureResourceOptions.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Rendering\Texture\UVs.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Social\Communications.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Social\Communications\EmailComposer.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Social\Facebook.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Social\Facebook\FacebookAuthenticationSystem.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Social\Facebook\FacebookPostSystem.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Social\ForwardDeclarations.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Base.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Base\Canvas.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Base\Component.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Base\ComponentDesc.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Base\ComponentFactory.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Base\PropertyLink.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Base\PropertyTypes.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Base\SizePolicy.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Base\UIComponent.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Base\UIComponentDesc.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Base\UIComponentFactory.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Base\Widget.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Base\WidgetDef.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Base\WidgetDefProvider.h" />
@@ -600,44 +612,48 @@
     <ClInclude Include="..\..\Source\ChilliSource\UI\Base\WidgetTemplate.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Base\WidgetTemplateProvider.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Button.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Button\HighlightComponent.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Button\ToggleHighlightComponent.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Button\HighlightUIComponent.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Button\ToggleHighlightUIComponent.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\Drawable.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\DrawableComponent.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\DrawableDef.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\DrawableUtils.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\NinePatchDrawable.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\NinePatchDrawableDef.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\StandardDrawable.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\StandardDrawableDef.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\ThreePatchDrawable.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\ThreePatchDrawableDef.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\DrawableUIComponent.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\NinePatchUIDrawable.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\NinePatchUIDrawableDef.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\StandardUIDrawable.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\StandardUIDrawableDef.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\ThreePatchUIDrawable.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\ThreePatchUIDrawableDef.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\UIDrawable.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\UIDrawableDef.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Drawable\UIDrawableUtils.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\ForwardDeclarations.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Layout.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\GridLayout.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\GridLayoutDef.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\HListLayout.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\HListLayoutDef.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\Layout.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\LayoutComponent.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\GridUILayout.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\GridUILayoutDef.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\HListUILayout.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\HListUILayoutDef.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\LayoutDef.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\VListLayout.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\VListLayoutDef.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\LayoutUIComponent.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\UILayout.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\UILayoutDef.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\VListUILayout.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Layout\VListUILayoutDef.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\ProgressBar.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\ProgressBar\ProgressBarComponent.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\ProgressBar\ProgressBarDirection.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\ProgressBar\ProgressBarType.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\ProgressBar\ProgressBarUIComponent.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Slider.h" />
-    <ClInclude Include="..\..\Source\ChilliSource\UI\Slider\SliderComponent.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Slider\SliderDirection.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Slider\SliderUIComponent.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Text.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Text\TextComponent.h" />
     <ClInclude Include="..\..\Source\ChilliSource\UI\Text\TextIcon.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\UI\Text\TextUIComponent.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Video\Base.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Video\Base\CSSubtitlesProvider.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Video\Base\Subtitles.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Video\Base\VideoPlayer.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Video\ForwardDeclarations.h" />
+    <ClInclude Include="..\..\Source\ChilliSource\Web\Base.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Web\Base\WebView.h" />
     <ClInclude Include="..\..\Source\ChilliSource\Web\ForwardDeclarations.h" />
     <ClInclude Include="..\..\Source\CSBackend\Platform\Windows\Core\Base\Device.h" />
@@ -670,119 +686,147 @@
     <ClInclude Include="..\..\Source\CSBackend\Rendering\OpenGL\Texture\Cubemap.h" />
     <ClInclude Include="..\..\Source\CSBackend\Rendering\OpenGL\Texture\Texture.h" />
     <ClInclude Include="..\..\Source\CSBackend\Rendering\OpenGL\Texture\TextureUnitSystem.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\CSProfiling.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\ForwardDeclarations.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Metrics\MetricsSystem.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\Shiny.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyConfig.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyData.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyMacros.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyManager.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyNode.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyNodePool.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyNodeState.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyOutput.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyPrereqs.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyTools.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyVersion.h" />
-    <ClInclude Include="..\..\Source\CSProfiling\Shiny\ShinyZone.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A9B516D3-71D5-4661-8EEE-DA55F3EADC9A}</ProjectGuid>
+    <ProjectGuid>{09108227-056C-4A6F-9A74-1C3ECA245C3F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ChilliSource</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  <ImportGroup Label="Shared">
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)..\..\Source\;$(ProjectDir)..\..\Libraries\Core\Windows\Headers\;$(ProjectDir)..\..\Libraries\CricketAudio\Windows\Headers\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)\csbin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\csobj\$(Platform)\$(Configuration)\a\b\</IntDir>
+    <OutDir>$(SolutionDir)Build\$(ProjectName)\Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Build\$(ProjectName)\Intermediate\$(Platform)\$(Configuration)\a\b\</IntDir>
+    <IncludePath>$(ProjectDir)..\..\Source;$(ProjectDir)..\..\Libraries\Core\Windows\Headers;$(ProjectDir)..\..\Libraries\CricketAudio\Windows\Headers;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)..\..\Source\;$(ProjectDir)..\..\Libraries\Core\Windows\Headers\;$(ProjectDir)..\..\Libraries\CricketAudio\Windows\Headers\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)\csbin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\csobj\$(Platform)\$(Configuration)\a\b\</IntDir>
+    <OutDir>$(SolutionDir)Build\$(ProjectName)\Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Build\$(ProjectName)\Intermediate\$(Platform)\$(Configuration)\a\b\</IntDir>
+    <IncludePath>$(ProjectDir)..\..\Source;$(ProjectDir)..\..\Libraries\Core\Windows\Headers;$(ProjectDir)..\..\Libraries\CricketAudio\Windows\Headers;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(ProjectDir)..\..\Source\;$(ProjectDir)..\..\Libraries\Core\Windows\Headers\;$(ProjectDir)..\..\Libraries\CricketAudio\Windows\Headers\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)\csbin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\csobj\$(Platform)\$(Configuration)\a\b\</IntDir>
+    <OutDir>$(SolutionDir)Build\$(ProjectName)\Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Build\$(ProjectName)\Intermediate\$(Platform)\$(Configuration)\a\b\</IntDir>
+    <IncludePath>$(ProjectDir)..\..\Source;$(ProjectDir)..\..\Libraries\Core\Windows\Headers;$(ProjectDir)..\..\Libraries\CricketAudio\Windows\Headers;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)..\..\Source\;$(ProjectDir)..\..\Libraries\Core\Windows\Headers\;$(ProjectDir)..\..\Libraries\CricketAudio\Windows\Headers\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)\csbin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\csobj\$(Platform)\$(Configuration)\a\b\</IntDir>
+    <OutDir>$(SolutionDir)Build\$(ProjectName)\Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Build\$(ProjectName)\Intermediate\$(Platform)\$(Configuration)\a\b\</IntDir>
+    <IncludePath>$(ProjectDir)..\..\Source;$(ProjectDir)..\..\Libraries\Core\Windows\Headers;$(ProjectDir)..\..\Libraries\CricketAudio\Windows\Headers;$(IncludePath)</IncludePath>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ClCompile>
-      <PreprocessorDefinitions>WIN32;NDEBUG;GLEW_STATIC;SFML_STATIC;CS_TARGETPLATFORM_WINDOWS;CS_LOGLEVEL_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
-    </ClCompile>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <ClCompile>
-      <PreprocessorDefinitions>WIN32;NDEBUG;GLEW_STATIC;SFML_STATIC;CS_TARGETPLATFORM_WINDOWS;CS_LOGLEVEL_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
-    </ClCompile>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;GLEW_STATIC;SFML_STATIC;CS_TARGETPLATFORM_WINDOWS;CS_ENABLE_DEBUG;CS_LOGLEVEL_VERBOSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;GLEW_STATIC;SFML_STATIC;CS_TARGETPLATFORM_WINDOWS;CS_ENABLE_DEBUG;CS_LOGLEVEL_VERBOSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;GLEW_STATIC;SFML_STATIC;CS_TARGETPLATFORM_WINDOWS;CS_ENABLE_DEBUG;CS_LOGLEVEL_VERBOSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_LIB;GLEW_STATIC;SFML_STATIC;CS_TARGETPLATFORM_WINDOWS;CS_ENABLE_DEBUG;CS_LOGLEVEL_VERBOSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;GLEW_STATIC;SFML_STATIC;CS_TARGETPLATFORM_WINDOWS;CS_LOGLEVEL_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;GLEW_STATIC;SFML_STATIC;CS_TARGETPLATFORM_WINDOWS;CS_LOGLEVEL_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

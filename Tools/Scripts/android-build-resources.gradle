@@ -53,7 +53,7 @@ def canInclude(String in_fileName, String[] in_ignoreFilesWith, String[] in_forc
             return true
         }
     }
-    for (String ignore : in_forceIncludeFilesWith) {
+    for (String ignore : in_ignoreFilesWith) {
         if (in_fileName.contains(ignore)) {
             return false
         }
@@ -105,7 +105,7 @@ def copyDirectory(String in_sourceDirectoryPath, String in_destDirectoryPath, St
  * @param in_directoryPath - The directory to copy the resource directories to.
  */
 def copyResourcesToDirectory(String in_directoryPath) {
-    def excludes = [ ".ios", ".windows", ".DS_Store" ] as String[]
+    def excludes = [ ".ios", ".windows", ".DS_Store", "Thumbs.db" ] as String[]
     def includes = [ ".android" ] as String[]
 
     File directory = new File(in_directoryPath)
@@ -155,7 +155,7 @@ def premultiplyPngsInDirectory(String in_directoryPath) {
 def createApkExpansionFromDirectory(String in_directoryPath, String in_applicationId, int in_versionCode) {
     def jarPath = file("../../../../ChilliSource/Tools/Zip.jar").absolutePath
     def uncompressedExtensions = ".jpg, .jpeg, .png, .gif, .wav, .mp2, .mp3, .ogg, .aac, .mpg, .mpeg, .mid, .midi," +
-        " .smf, .jet, .rtttl, .imy, .xmf, .mp4, .m4a, .m4v, .3gp, .3gpp, .3g2, .3gpp2, .amr, .awb, .wma, .wmv"
+        " .smf, .jet, .rtttl, .imy, .xmf, .mp4, .m4a, .m4v, .3gp, .3gpp, .3g2, .3gpp2, .amr, .awb, .wma, .wmv, .cks"
     
     File directory = new File(file("build/outputs/obb").absolutePath as String)
     if (!directory.exists()) {

@@ -42,22 +42,19 @@
 
 namespace ChilliSource
 {
-    namespace Core
+    CS_DEFINE_NAMEDTYPE(PlatformSystem);
+    //-----------------------------------------
+    //-----------------------------------------
+    PlatformSystemUPtr PlatformSystem::Create()
     {
-        CS_DEFINE_NAMEDTYPE(PlatformSystem);
-        //-----------------------------------------
-        //-----------------------------------------
-        PlatformSystemUPtr PlatformSystem::Create()
-        {
 #ifdef CS_TARGETPLATFORM_IOS
-            return PlatformSystemUPtr(new CSBackend::iOS::PlatformSystem());
+        return PlatformSystemUPtr(new CSBackend::iOS::PlatformSystem());
 #elif defined CS_TARGETPLATFORM_ANDROID
-            return PlatformSystemUPtr(new CSBackend::Android::PlatformSystem());
+        return PlatformSystemUPtr(new CSBackend::Android::PlatformSystem());
 #elif defined CS_TARGETPLATFORM_WINDOWS
-			return PlatformSystemUPtr(new CSBackend::Windows::PlatformSystem());
+        return PlatformSystemUPtr(new CSBackend::Windows::PlatformSystem());
 #else
-            return nullptr;
+        return nullptr;
 #endif
-        }
     }
 }

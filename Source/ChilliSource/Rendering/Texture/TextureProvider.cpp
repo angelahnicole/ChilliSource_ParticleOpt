@@ -36,128 +36,153 @@
 
 namespace ChilliSource
 {
-	namespace Rendering
-	{
-        CS_DEFINE_NAMEDTYPE(TextureProvider);
+    CS_DEFINE_NAMEDTYPE(TextureProvider);
+    
+    const IResourceOptionsBaseCSPtr TextureProvider::s_defaultOptions(std::make_shared<TextureResourceOptions>());
+    
+    //-------------------------------------------------------
+    //-------------------------------------------------------
+    TextureProviderUPtr TextureProvider::Create()
+    {
+        return TextureProviderUPtr(new TextureProvider());
+    }
+    //-------------------------------------------------------------------------
+    //-------------------------------------------------------------------------
+    bool TextureProvider::IsA(InterfaceIDType in_interfaceId) const
+    {
+        return in_interfaceId == ResourceProvider::InterfaceID || in_interfaceId == TextureProvider::InterfaceID;
+    }
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    void TextureProvider::PostCreate()
+    {
+        auto resourceProviders = Application::Get()->GetSystems<ResourceProvider>();
         
-        const Core::IResourceOptionsBaseCSPtr TextureProvider::s_defaultOptions(std::make_shared<TextureResourceOptions>());
+        for(u32 i=0; i<resourceProviders.size(); ++i)
+        {
+            if(resourceProviders[i]->GetResourceType() == Image::InterfaceID)
+            {
+                m_imageProviders.push_back(resourceProviders[i]);
+            }
+        }
+    }
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    InterfaceIDType TextureProvider::GetResourceType() const
+    {
+        return Texture::InterfaceID;
+    }
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    bool TextureProvider::CanCreateResourceWithFileExtension(const std::string& in_extension) const
+    {
+        for(u32 i=0; i<m_imageProviders.size(); ++i)
+        {
+            if(m_imageProviders[i]->CanCreateResourceWithFileExtension(in_extension))
+            {
+                return true;
+            }
+        }
         
-        //-------------------------------------------------------
-        //-------------------------------------------------------
-        TextureProviderUPtr TextureProvider::Create()
+        return false;
+    }
+    //----------------------------------------------------
+    //----------------------------------------------------
+    IResourceOptionsBaseCSPtr TextureProvider::GetDefaultOptions() const
+    {
+        return s_defaultOptions;
+    }
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    void TextureProvider::CreateResourceFromFile(StorageLocation in_location, const std::string& in_filePath, const IResourceOptionsBaseCSPtr& in_options, const ResourceSPtr& out_resource)
+    {
+        LoadTexture(in_location, in_filePath, in_options, nullptr, out_resource);
+    }
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    void TextureProvider::CreateResourceFromFileAsync(StorageLocation in_location, const std::string& in_filePath, const IResourceOptionsBaseCSPtr& in_options, const ResourceProvider::AsyncLoadDelegate& in_delegate, const ResourceSPtr& out_resource)
+    {
+        Application::Get()->GetTaskScheduler()->ScheduleTask(TaskType::k_file, [=](const TaskContext&) noexcept
         {
-            return TextureProviderUPtr(new TextureProvider());
-        }
-		//-------------------------------------------------------------------------
-		//-------------------------------------------------------------------------
-		bool TextureProvider::IsA(Core::InterfaceIDType in_interfaceId) const
-		{
-			return in_interfaceId == ResourceProvider::InterfaceID || in_interfaceId == TextureProvider::InterfaceID;
-		}
-        //----------------------------------------------------------------------------
-        //----------------------------------------------------------------------------
-        void TextureProvider::PostCreate()
+            LoadTexture(in_location, in_filePath, in_options, in_delegate, out_resource);
+        });
+    }
+    //----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------
+    void TextureProvider::LoadTexture(StorageLocation in_location, const std::string& in_filePath, const IResourceOptionsBaseCSPtr& in_options, const ResourceProvider::AsyncLoadDelegate& in_delegate, const ResourceSPtr& out_resource)
+    {
+        CS_ASSERT(in_options != nullptr, "Options for texture load cannot be null");
+        
+        std::string fileName;
+        std::string fileExtension;
+        StringUtils::SplitBaseFilename(in_filePath, fileName, fileExtension);
+        
+        ResourceProvider* imageProvider = nullptr;
+        for(u32 i=0; i<m_imageProviders.size(); ++i)
         {
-            auto resourceProviders = Core::Application::Get()->GetSystems<Core::ResourceProvider>();
-            
-            for(u32 i=0; i<resourceProviders.size(); ++i)
+            if(m_imageProviders[i]->CanCreateResourceWithFileExtension(fileExtension))
             {
-                if(resourceProviders[i]->GetResourceType() == Core::Image::InterfaceID)
-                {
-                    m_imageProviders.push_back(resourceProviders[i]);
-                }
+                imageProvider = m_imageProviders[i];
+                break;
             }
         }
-        //----------------------------------------------------------------------------
-        //----------------------------------------------------------------------------
-        Core::InterfaceIDType TextureProvider::GetResourceType() const
+        
+        if(imageProvider == nullptr)
         {
-            return Texture::InterfaceID;
+            CS_LOG_ERROR("Cannot find provider for " + in_filePath);
+            out_resource->SetLoadState(Resource::LoadState::k_failed);
+            if(in_delegate != nullptr)
+            {
+                Application::Get()->GetTaskScheduler()->ScheduleTask(TaskType::k_mainThread, [=](const TaskContext&) noexcept
+                {
+                    in_delegate(out_resource);
+                });
+            }
+            return;
         }
-		//----------------------------------------------------------------------------
-		//----------------------------------------------------------------------------
-		bool TextureProvider::CanCreateResourceWithFileExtension(const std::string& in_extension) const
-		{
-            for(u32 i=0; i<m_imageProviders.size(); ++i)
-            {
-                if(m_imageProviders[i]->CanCreateResourceWithFileExtension(in_extension))
-                {
-                    return true;
-                }
-            }
-            
-			return false;
-		}
-        //----------------------------------------------------
-        //----------------------------------------------------
-        Core::IResourceOptionsBaseCSPtr TextureProvider::GetDefaultOptions() const
+        
+        ResourceSPtr imageResource(Image::Create());
+        imageProvider->CreateResourceFromFile(in_location, in_filePath, nullptr, imageResource);
+        ImageSPtr image(std::static_pointer_cast<Image>(imageResource));
+        
+        if(image->GetLoadState() == Resource::LoadState::k_failed)
         {
-            return s_defaultOptions;
+            CS_LOG_ERROR("Failed to load image " + in_filePath);
+            out_resource->SetLoadState(Resource::LoadState::k_failed);
+            if(in_delegate != nullptr)
+            {
+                Application::Get()->GetTaskScheduler()->ScheduleTask(TaskType::k_mainThread, [=](const TaskContext&) noexcept
+                {
+                    in_delegate(out_resource);
+                });
+            }
+            return;
         }
-        //----------------------------------------------------------------------------
-        //----------------------------------------------------------------------------
-		void TextureProvider::CreateResourceFromFile(Core::StorageLocation in_location, const std::string& in_filePath, const Core::IResourceOptionsBaseCSPtr& in_options, const Core::ResourceSPtr& out_resource)
-		{
-            LoadTexture(in_location, in_filePath, in_options, nullptr, out_resource);
-		}
-        //----------------------------------------------------------------------------
-        //----------------------------------------------------------------------------
-		void TextureProvider::CreateResourceFromFileAsync(Core::StorageLocation in_location, const std::string& in_filePath, const Core::IResourceOptionsBaseCSPtr& in_options, const Core::ResourceProvider::AsyncLoadDelegate& in_delegate, const Core::ResourceSPtr& out_resource)
+        
+        if(in_delegate == nullptr)
         {
-			auto task = std::bind(&TextureProvider::LoadTexture, this, in_location, in_filePath, in_options, in_delegate, out_resource);
-            Core::Application::Get()->GetTaskScheduler()->ScheduleTask(task);
+            Texture* texture = (Texture*)out_resource.get();
+            const TextureResourceOptions* options = (const TextureResourceOptions*)in_options.get();
+            
+            Texture::Descriptor desc;
+            desc.m_width = image->GetWidth();
+            desc.m_height = image->GetHeight();
+            desc.m_format = image->GetFormat();
+            desc.m_compression = image->GetCompression();
+            desc.m_dataSize = image->GetDataSize();
+
+            texture->Build(desc, Texture::TextureDataUPtr(image->MoveData()), options->IsMipMapsEnabled(), options->IsRestoreTextureDataEnabled());
+            texture->SetWrapMode(options->GetWrapModeS(), options->GetWrapModeT());
+            texture->SetFilterMode(options->GetFilterMode());
+            out_resource->SetLoadState(Resource::LoadState::k_loaded);
         }
-        //----------------------------------------------------------------------------
-        //----------------------------------------------------------------------------
-		void TextureProvider::LoadTexture(Core::StorageLocation in_location, const std::string& in_filePath, const Core::IResourceOptionsBaseCSPtr& in_options, const Core::ResourceProvider::AsyncLoadDelegate& in_delegate, const Core::ResourceSPtr& out_resource)
+        else
         {
-            CS_ASSERT(in_options != nullptr, "Options for texture load cannot be null");
-            
-            std::string fileName;
-            std::string fileExtension;
-            Core::StringUtils::SplitBaseFilename(in_filePath, fileName, fileExtension);
-            
-            Core::ResourceProvider* imageProvider = nullptr;
-            for(u32 i=0; i<m_imageProviders.size(); ++i)
-            {
-                if(m_imageProviders[i]->CanCreateResourceWithFileExtension(fileExtension))
-                {
-                    imageProvider = m_imageProviders[i];
-                    break;
-                }
-            }
-            
-            if(imageProvider == nullptr)
-            {
-                CS_LOG_ERROR("Cannot find provider for " + in_filePath);
-                out_resource->SetLoadState(Core::Resource::LoadState::k_failed);
-                if(in_delegate != nullptr)
-                {
-					Core::Application::Get()->GetTaskScheduler()->ScheduleMainThreadTask(std::bind(in_delegate, out_resource));
-                }
-                return;
-            }
-            
-            Core::ResourceSPtr imageResource(Core::Image::Create());
-            imageProvider->CreateResourceFromFile(in_location, in_filePath, nullptr, imageResource);
-            Core::ImageSPtr image(std::static_pointer_cast<Core::Image>(imageResource));
-            
-            if(image->GetLoadState() == Core::Resource::LoadState::k_failed)
-            {
-                CS_LOG_ERROR("Failed to load image " + in_filePath);
-                out_resource->SetLoadState(Core::Resource::LoadState::k_failed);
-                if(in_delegate != nullptr)
-                {
-					Core::Application::Get()->GetTaskScheduler()->ScheduleMainThreadTask(std::bind(in_delegate, out_resource));
-                }
-                return;
-            }
-            
-            if(in_delegate == nullptr)
+            Application::Get()->GetTaskScheduler()->ScheduleTask(TaskType::k_mainThread, [=](const TaskContext&) noexcept
             {
                 Texture* texture = (Texture*)out_resource.get();
                 const TextureResourceOptions* options = (const TextureResourceOptions*)in_options.get();
-                
+
                 Texture::Descriptor desc;
                 desc.m_width = image->GetWidth();
                 desc.m_height = image->GetHeight();
@@ -168,31 +193,10 @@ namespace ChilliSource
                 texture->Build(desc, Texture::TextureDataUPtr(image->MoveData()), options->IsMipMapsEnabled(), options->IsRestoreTextureDataEnabled());
                 texture->SetWrapMode(options->GetWrapModeS(), options->GetWrapModeT());
                 texture->SetFilterMode(options->GetFilterMode());
-                out_resource->SetLoadState(Core::Resource::LoadState::k_loaded);
-            }
-            else
-            {
-                auto task([image, in_options, in_delegate, out_resource]()
-                {
-                    Texture* texture = (Texture*)out_resource.get();
-                    const TextureResourceOptions* options = (const TextureResourceOptions*)in_options.get();
-                    
-                    Texture::Descriptor desc;
-                    desc.m_width = image->GetWidth();
-                    desc.m_height = image->GetHeight();
-                    desc.m_format = image->GetFormat();
-                    desc.m_compression = image->GetCompression();
-                    desc.m_dataSize = image->GetDataSize();
-                    
-                    texture->Build(desc, Texture::TextureDataUPtr(image->MoveData()), options->IsMipMapsEnabled(), options->IsRestoreTextureDataEnabled());
-                    texture->SetWrapMode(options->GetWrapModeS(), options->GetWrapModeT());
-                    texture->SetFilterMode(options->GetFilterMode());
-                    out_resource->SetLoadState(Core::Resource::LoadState::k_loaded);
-                    in_delegate(out_resource);
-                });
-                Core::Application::Get()->GetTaskScheduler()->ScheduleMainThreadTask(task);
-            }
+                out_resource->SetLoadState(Resource::LoadState::k_loaded);
+                in_delegate(out_resource);
+            });
         }
-	}
+    }
 }
 

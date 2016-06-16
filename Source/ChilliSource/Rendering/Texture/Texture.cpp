@@ -34,19 +34,16 @@
 
 namespace ChilliSource
 {
-	namespace Rendering
-	{
-        CS_DEFINE_NAMEDTYPE(Texture);
-        
-        //--------------------------------------------------------------
-        //--------------------------------------------------------------
-        TextureUPtr Texture::Create()
-        {
+    CS_DEFINE_NAMEDTYPE(Texture);
+    
+    //--------------------------------------------------------------
+    //--------------------------------------------------------------
+    TextureUPtr Texture::Create()
+    {
 #if defined(CS_TARGETPLATFORM_ANDROID) || defined(CS_TARGETPLATFORM_IOS) || defined(CS_TARGETPLATFORM_WINDOWS)
-            return TextureUPtr(new CSBackend::OpenGL::Texture());
+        return TextureUPtr(new CSBackend::OpenGL::Texture());
 #else
-            return nullptr;
+        return nullptr;
 #endif
-        }
-	}
+    }
 }

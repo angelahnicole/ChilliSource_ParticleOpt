@@ -37,6 +37,8 @@
 //this needs to be included last
 #include <windows.h>
 
+#pragma comment(lib, "version.lib" )
+
 namespace CSBackend
 {
     namespace Windows
@@ -74,16 +76,56 @@ namespace CSBackend
 				return "Microsoft";
             }
 			//----------------------------------------------
+			/// This reads the version info of the 
+			/// kernel32.dll system library and pulls the
+			/// OS version from it, as recommended by
+			/// MSDN:
+			///
+			/// https://msdn.microsoft.com/en-us/library/windows/desktop/ms724429(v=vs.85).aspx
+			///
 			/// @author Ian Copland
 			///
 			/// @return The OS version number string.
 			//----------------------------------------------
-            std::string GetOSVersion()
+            std::string GetOSVersion() noexcept
             {
-				OSVERSIONINFOEX osvi;
-				ZeroMemory(&osvi, sizeof(OSVERSIONINFOEX)); osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-				GetVersionEx((OSVERSIONINFO*)&osvi);
-				return std::string(CSCore::ToString((u32)osvi.dwMajorVersion) + "." + CSCore::ToString((u32)osvi.dwMinorVersion));
+				// This is based off the answer given by Chuck Walbourn here: http://stackoverflow.com/questions/22303824/warning-c4996-getversionexw-was-declared-deprecated
+
+				WCHAR path[_MAX_PATH];
+				if (!GetSystemDirectoryW(path, _MAX_PATH))
+				{
+					CS_LOG_FATAL("Failed to get the system directory path.");
+				}
+
+				wcscat_s(path, L"\\kernel32.dll");
+
+				DWORD handle;
+				DWORD len = GetFileVersionInfoSizeExW(FILE_VER_GET_NEUTRAL, path, &handle);
+				CS_ASSERT(len > 0, "Failed to get the kernel32.dll file version info size.");
+
+				std::unique_ptr<uint8_t> buff(new uint8_t[len]);
+				if (!GetFileVersionInfoExW(FILE_VER_GET_NEUTRAL, path, 0, len, buff.get()))
+				{
+					CS_LOG_FATAL("Failed to get the kernel32.dll file version info.");
+				}
+
+				VS_FIXEDFILEINFO *vInfo = nullptr;
+				UINT infoSize;
+
+				if (!VerQueryValueW(buff.get(), L"\\", reinterpret_cast<LPVOID*>(&vInfo), &infoSize))
+				{
+					CS_LOG_FATAL("Failed to query version info.");
+				}
+
+				if (infoSize == 0)
+				{
+					CS_LOG_FATAL("Info size is 0.");
+				}
+
+				return ChilliSource::ToString(HIWORD(vInfo->dwFileVersionMS)) + "." +
+					ChilliSource::ToString(LOWORD(vInfo->dwFileVersionMS)) + "." +
+					ChilliSource::ToString(HIWORD(vInfo->dwFileVersionLS)) + "." +
+					ChilliSource::ToString(LOWORD(vInfo->dwFileVersionLS));
             }
 			//----------------------------------------------
 			/// @author Ian Copland
@@ -115,7 +157,7 @@ namespace CSBackend
 			//----------------------------------------------------
 			std::string ParseLanguageFromLocale(const std::string& in_locale)
 			{
-				std::vector<std::string> strLocaleBrokenUp = CSCore::StringUtils::Split(in_locale, "_", 0);
+				std::vector<std::string> strLocaleBrokenUp = ChilliSource::StringUtils::Split(in_locale, "_", 0);
 
 				if (strLocaleBrokenUp.size() > 0)
 				{
@@ -166,9 +208,9 @@ namespace CSBackend
         }
         //-------------------------------------------------------
         //-------------------------------------------------------
-        bool Device::IsA(CSCore::InterfaceIDType in_interfaceId) const
+        bool Device::IsA(ChilliSource::InterfaceIDType in_interfaceId) const
         {
-            return (CSCore::Device::InterfaceID == in_interfaceId || Device::InterfaceID == in_interfaceId);
+            return (ChilliSource::Device::InterfaceID == in_interfaceId || Device::InterfaceID == in_interfaceId);
         }
         //---------------------------------------------------
         //---------------------------------------------------

@@ -31,25 +31,22 @@
 
 namespace ChilliSource
 {
-	namespace Rendering
-	{
-        //---------------------------------------------
-        /// The renderer adds to the render buffer
-        /// in a series of lighting passes.
-        /// * The ambient pass
-        /// * The directional pass
-        /// * The point light pass
-        ///
-        /// @author S Downie
-        //---------------------------------------------
-        enum class ShaderPass
-        {
-            k_ambient,
-            k_directional,
-            k_point,
-            k_total
-        };
-	}
+    //---------------------------------------------
+    /// The renderer adds to the render buffer
+    /// in a series of lighting passes.
+    /// * The ambient pass
+    /// * The directional pass
+    /// * The point light pass
+    ///
+    /// @author S Downie
+    //---------------------------------------------
+    enum class ShaderPass
+    {
+        k_ambient,
+        k_directional,
+        k_point,
+        k_total
+    };
 }
 
 #endif

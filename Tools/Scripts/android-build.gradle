@@ -184,12 +184,14 @@ def addGetInfoTasks(def in_defaultConfig, def in_applicationVariants) {
                 }
 
                 g_versionCode = in_defaultConfig.versionCode
+                g_versionName = in_defaultConfig.versionName
 
                 for (def i = 0; i < in_variant.productFlavors.size(); ++i)
                 {
-                    def flavourVersionCode = in_variant.productFlavors.get(i).versionCode
-                    if (flavourVersionCode != null && flavourVersionCode > 0) {
-                        g_versionCode = flavourVersionCode
+                    def productFlavour = in_variant.productFlavors.get(i)
+                    if (productFlavour.versionCode != null && productFlavour.versionCode > 0) {
+                        g_versionCode = productFlavour.versionCode
+                        g_versionName = productFlavour.versionName
                     }
                 }
             }
@@ -224,6 +226,7 @@ def addApkExpansionTasks(def in_applicationVariants) {
 ext {
     g_applicationId = ""
     g_versionCode = 0
+    g_versionName = ""
 
     /**
      * Adds task dependencies as required for building a ChilliSource library.
@@ -340,13 +343,35 @@ ext {
      */
     csFixDefaultLibraryDependancies = { in_tasks ->
         in_tasks.all() { task ->
-            def androidSupportLibV7TaskName = "prepareComAndroidSupportAppcompatV72220Library"
-            def androidSupportLibV4TaskName = "prepareComAndroidSupportSupportV42220Library"
-            def googlePlayServicesLibTaskName = "prepareComGoogleAndroidGmsPlayServices750Library"
-            def facebookLibTaskName = "prepareComFacebookAndroidFacebookAndroidSdk3231Library"
+            tasksToClear = [
+                "prepareComAndroidSupportAppcompatV72220Library",
+                "prepareComAndroidSupportMediarouterV72200Library",
+                "prepareComAndroidSupportSupportV42220Library",
+                "prepareComFacebookAndroidFacebookAndroidSdk3231Library",
+                "prepareComGoogleAndroidGmsPlayServices750Library",
+                "prepareComGoogleAndroidGmsPlayServicesAds750Library",
+                "prepareComGoogleAndroidGmsPlayServicesAnalytics750Library",
+                "prepareComGoogleAndroidGmsPlayServicesAppindexing750Library",
+                "prepareComGoogleAndroidGmsPlayServicesAppinvite750Library",
+                "prepareComGoogleAndroidGmsPlayServicesAppstate750Library",
+                "prepareComGoogleAndroidGmsPlayServicesBase750Library",
+                "prepareComGoogleAndroidGmsPlayServicesCast750Library",
+                "prepareComGoogleAndroidGmsPlayServicesDrive750Library",
+                "prepareComGoogleAndroidGmsPlayServicesFitness750Library",
+                "prepareComGoogleAndroidGmsPlayServicesGames750Library",
+                "prepareComGoogleAndroidGmsPlayServicesGcm750Library",
+                "prepareComGoogleAndroidGmsPlayServicesIdentity750Library",
+                "prepareComGoogleAndroidGmsPlayServicesLocation750Library",
+                "prepareComGoogleAndroidGmsPlayServicesMaps750Library",
+                "prepareComGoogleAndroidGmsPlayServicesNearby750Library",
+                "prepareComGoogleAndroidGmsPlayServicesPanorama750Library",
+                "prepareComGoogleAndroidGmsPlayServicesPlus750Library",
+                "prepareComGoogleAndroidGmsPlayServicesSafetynet750Library",
+                "prepareComGoogleAndroidGmsPlayServicesWallet750Library",
+                "prepareComGoogleAndroidGmsPlayServicesWearable750Library",
+            ]
 
-            def taskName = task.name.toLowerCase()
-            if (taskName == androidSupportLibV7TaskName || taskName == androidSupportLibV4TaskName || taskName == googlePlayServicesLibTaskName || taskName == facebookLibTaskName) {
+            if (tasksToClear.contains(task.name)) {
                 task.dependsOn.clear()
             }
         }

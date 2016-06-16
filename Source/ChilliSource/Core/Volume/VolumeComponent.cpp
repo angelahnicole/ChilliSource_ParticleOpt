@@ -30,8 +30,5 @@
 
 namespace ChilliSource
 {
-    namespace Core
-    {
-        CS_DEFINE_NAMEDTYPE(VolumeComponent);
-    }
+    CS_DEFINE_NAMEDTYPE(VolumeComponent);
 }

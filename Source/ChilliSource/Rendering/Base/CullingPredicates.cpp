@@ -32,17 +32,14 @@
 
 namespace ChilliSource
 {
-    namespace Rendering
+    bool ViewportCullPredicate::CullItem(CameraComponent* inpCamera, RenderComponent* inpItem) const
     {
-        bool ViewportCullPredicate::CullItem(CameraComponent* inpCamera, RenderComponent* inpItem) const
-        {
-            return false;
-        }
-        
-        bool FrustumCullPredicate::CullItem(CameraComponent* inpCamera, RenderComponent* inpItem) const
-        {
-            return !inpCamera->GetFrustum().SphereCullTest(inpItem->GetBoundingSphere());
-        }
+        return false;
+    }
+    
+    bool FrustumCullPredicate::CullItem(CameraComponent* inpCamera, RenderComponent* inpItem) const
+    {
+        return !inpCamera->GetFrustum().SphereCullTest(inpItem->GetBoundingSphere());
     }
 }
 
